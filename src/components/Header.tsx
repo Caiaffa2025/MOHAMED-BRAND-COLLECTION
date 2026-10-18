@@ -91,31 +91,31 @@ export const Header: React.FC<HeaderProps> = ({
   }, [searchQuery, searchByCodeOnly, products]);
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-xs border-b border-stone-200">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-xs border-b border-stone-200 w-full max-w-full">
       {/* Top Announcement Bar */}
-      <div className="bg-gradient-to-r from-stone-900 via-neutral-900 to-amber-950 text-amber-200 text-xs py-2 px-4">
+      <div className="bg-gradient-to-r from-stone-900 via-neutral-900 to-amber-950 text-amber-200 text-xs py-2 px-3 sm:px-4 w-full overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
-          <div className="flex items-center gap-4 flex-wrap justify-center">
+          <div className="flex items-center gap-2 sm:gap-4 flex-wrap justify-center text-[11px] sm:text-xs">
             <span className="flex items-center gap-1 font-medium">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               <span>DISTRIBUIDORA OFICIAL <strong>MOHAMED BRAND COLLECTION</strong></span>
             </span>
             <span className="hidden md:inline-block text-amber-400/50">•</span>
             <span className="flex items-center gap-1 text-stone-200">
-              <Truck className="w-3.5 h-3.5 text-amber-400" />
+              <Truck className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               <span>Frete Grátis acima de R$ 399</span>
             </span>
             <span className="hidden md:inline-block text-amber-400/50">•</span>
             <span className="flex items-center gap-1 text-emerald-400 font-semibold">
-              <Percent className="w-3.5 h-3.5" />
+              <Percent className="w-3.5 h-3.5 shrink-0" />
               <span>Pagamento Exclusivo via PIX (Confirmação Imediata)</span>
             </span>
           </div>
 
-          <div className="flex items-center gap-3 text-xs flex-wrap justify-center">
+          <div className="flex items-center gap-2.5 sm:gap-3 text-[11px] sm:text-xs flex-wrap justify-center">
             <span className="text-stone-300 flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
-              <span>Compra 100% Segura</span>
+              <ShieldCheck className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>Compra Segura</span>
             </span>
             <a
               href={STORE_CONFIG.getWhatsappUrl("Olá, gostaria de informações sobre os perfumes Mohamed Brand Collection")}
@@ -123,7 +123,7 @@ export const Header: React.FC<HeaderProps> = ({
               rel="noopener noreferrer"
               className="text-stone-300 hover:text-amber-300 flex items-center gap-1 transition"
             >
-              <PhoneCall className="w-3.5 h-3.5 text-emerald-400" />
+              <PhoneCall className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
               <span>{STORE_CONFIG.whatsappDisplay}</span>
             </a>
             {/* Admin Link */}
@@ -132,7 +132,7 @@ export const Header: React.FC<HeaderProps> = ({
               className="text-amber-200 hover:text-white flex items-center gap-1 font-semibold px-2 py-0.5 rounded-md bg-white/10 hover:bg-white/20 transition cursor-pointer border border-amber-400/30"
               title="Painel do Administrador (Senha 1966)"
             >
-              <Lock className="w-3 h-3 text-amber-400" />
+              <Lock className="w-3 h-3 text-amber-400 shrink-0" />
               <span>{isAdminLoggedIn ? 'Painel Admin' : 'Admin'}</span>
             </button>
           </div>
@@ -140,28 +140,28 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Main Header Row */}
-      <div className="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4 w-full min-w-0">
         {/* Mobile Menu Toggle & Brand */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 max-w-[calc(100%-110px)] sm:max-w-none">
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-stone-700 hover:bg-stone-100 rounded-lg transition"
+            className="md:hidden p-1.5 sm:p-2 text-stone-700 hover:bg-stone-100 rounded-lg transition shrink-0"
             aria-label="Abrir menu"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
           </button>
 
           {/* Logo Mohamed_Brand_Collection */}
-          <a href="#" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 via-amber-600 to-amber-900 flex items-center justify-center text-white shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform duration-300">
-              <span className="font-serif font-black text-xl tracking-tighter">M</span>
+          <a href="#" className="flex items-center gap-2 group min-w-0 flex-1">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amber-400 via-amber-600 to-amber-900 flex items-center justify-center text-white shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform duration-300 shrink-0">
+              <span className="font-serif font-black text-base sm:text-xl tracking-tighter">M</span>
             </div>
-            <div className="flex flex-col">
-              <span className="font-serif font-bold text-lg sm:text-xl text-stone-900 tracking-tight leading-none group-hover:text-amber-800 transition">
+            <div className="flex flex-col min-w-0 flex-1">
+              <span className="font-serif font-bold text-sm sm:text-base lg:text-xl text-stone-900 tracking-tight leading-tight group-hover:text-amber-800 transition truncate block">
                 Mohamed<span className="text-amber-600">_</span>Brand<span className="text-amber-600">_</span>Collection
               </span>
-              <span className="text-[10px] uppercase tracking-widest text-stone-500 font-semibold mt-0.5">
-                Perfumes Miniaturas 25ml Importados
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-stone-500 font-semibold truncate block">
+                Perfumes Miniaturas 25ml
               </span>
             </div>
           </a>
@@ -369,7 +369,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Admin Access Button */}
           <button
             onClick={openAdmin}
-            className={`flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border transition ${
+            className={`hidden sm:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border transition ${
               isAdminLoggedIn
                 ? 'bg-amber-100 border-amber-300 text-amber-900 shadow-xs'
                 : 'text-stone-700 hover:text-amber-900 hover:bg-amber-50/60 border-stone-200'
@@ -377,13 +377,13 @@ export const Header: React.FC<HeaderProps> = ({
             title="Painel do Administrador (Editar Produtos, Valores e Imagens)"
           >
             <Lock className="w-3.5 h-3.5 text-amber-700" />
-            <span className="hidden xl:inline">{isAdminLoggedIn ? 'Painel Admin' : 'Admin (1966)'}</span>
+            <span className="hidden xl:inline">{isAdminLoggedIn ? 'Painel Admin' : 'Admin'}</span>
           </button>
 
           {/* Shopping Cart Button */}
           <button
             onClick={() => setIsCartOpen(true)}
-            className="flex items-center gap-2.5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white px-3.5 sm:px-4 py-2.5 rounded-xl font-medium text-sm shadow-md shadow-amber-700/20 hover:shadow-lg transition-all transform active:scale-95"
+            className="flex items-center gap-2.5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl font-medium text-sm shadow-md shadow-amber-700/20 hover:shadow-lg transition-all transform active:scale-95 shrink-0"
             aria-label="Ver Carrinho"
           >
             <div className="relative">
@@ -407,7 +407,7 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Mobile Search Input */}
-      <div className="lg:hidden px-4 pb-3 relative">
+      <div className="lg:hidden px-3 sm:px-4 pb-3 relative w-full max-w-full">
         <div className={`flex items-center rounded-2xl border transition shadow-xs bg-white ${
           searchByCodeOnly 
             ? 'border-amber-500 ring-2 ring-amber-500/20' 
@@ -530,8 +530,8 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Category Navigation Bar */}
-      <nav className="bg-stone-50 border-t border-stone-200 overflow-x-auto no-scrollbar">
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between gap-1 sm:gap-2 py-1 text-xs sm:text-sm font-medium whitespace-nowrap">
+      <nav className="bg-stone-50 border-t border-stone-200 overflow-x-auto no-scrollbar touch-scroll w-full">
+        <div className="w-max min-w-full max-w-7xl mx-auto px-3 sm:px-4 flex items-center justify-between gap-1 sm:gap-2 py-1.5 text-xs sm:text-sm font-medium whitespace-nowrap">
           <div className="flex items-center gap-1 sm:gap-2">
             <button
               onClick={() => {

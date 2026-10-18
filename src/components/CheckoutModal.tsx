@@ -29,6 +29,7 @@ export const CheckoutModal: React.FC = () => {
   const [step, setStep] = useState<'details' | 'payment' | 'success'>('details');
   const [copiedPix, setCopiedPix] = useState(false);
   const [orderNumber, setOrderNumber] = useState('');
+  const [formError, setFormError] = useState('');
 
   // Form fields
   const [name, setName] = useState('');
@@ -59,6 +60,7 @@ export const CheckoutModal: React.FC = () => {
           setNeighborhood(data.bairro || '');
           setCity(data.localidade || '');
           setState(data.uf || 'SP');
+          setFormError('');
         }
       } catch (e) {
         console.error(e);
@@ -68,8 +70,9 @@ export const CheckoutModal: React.FC = () => {
 
   const handleSubmitDetails = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone || !email || !cep || !street || !number || !city) {
-      alert('Por favor, preencha todos os campos obrigatórios de contato e entrega.');
+    setFormError('');
+    if (!name.trim() || !phone.trim() || !email.trim() || !cep.trim() || !street.trim() || !number.trim() || !city.trim()) {
+      setFormError('Por favor, preencha todos os campos obrigatórios marcados com *.');
       return;
     }
     setStep('payment');
@@ -119,59 +122,68 @@ export const CheckoutModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-stone-950/75 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
-      <div className="relative bg-white rounded-3xl max-w-2xl w-full shadow-2xl border border-stone-200 overflow-hidden my-6">
+    <div className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden bg-stone-950/75 backdrop-blur-xs flex items-center justify-center p-2.5 sm:p-4 touch-scroll w-full">
+      <div className="relative bg-white rounded-3xl max-w-2xl w-full shadow-2xl border border-stone-200 overflow-hidden my-4 sm:my-6">
         {/* Header */}
-        <div className="bg-stone-900 text-white p-4 sm:p-5 flex items-center justify-between">
+        <div className="bg-stone-900 text-white p-3.5 sm:p-5 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-5 h-5 text-emerald-400" />
+            <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0" />
             <div>
-              <h2 className="font-display font-bold text-base sm:text-lg text-amber-100">
+              <h2 className="font-display font-bold text-sm sm:text-lg text-amber-100">
                 Checkout Seguro • Mohamed_Brand_Collection
               </h2>
-              <p className="text-stone-400 text-xs">
+              <p className="text-stone-400 text-[11px] sm:text-xs">
                 Pagamento Exclusivo via PIX | Confirmação Instantânea
               </p>
             </div>
           </div>
           <button
             onClick={() => setIsCheckoutOpen(false)}
-            className="p-1.5 rounded-lg text-stone-400 hover:text-white transition cursor-pointer"
+            className="p-1.5 rounded-lg text-stone-400 hover:text-white transition cursor-pointer min-w-[36px] min-h-[36px] flex items-center justify-center"
+            aria-label="Fechar checkout"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Steps indicator */}
-        <div className="bg-stone-100 px-6 py-3 flex items-center justify-between text-xs border-b border-stone-200">
-          <div className={`flex items-center gap-1.5 font-bold ${step === 'details' ? 'text-amber-800' : 'text-emerald-700'}`}>
-            <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${step === 'details' ? 'bg-amber-600 text-white' : 'bg-emerald-600 text-white'}`}>
+        <div className="bg-stone-100 px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between text-[11px] sm:text-xs border-b border-stone-200">
+          <div className={`flex items-center gap-1 sm:gap-1.5 font-bold ${step === 'details' ? 'text-amber-800' : 'text-emerald-700'}`}>
+            <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] shrink-0 ${step === 'details' ? 'bg-amber-600 text-white' : 'bg-emerald-600 text-white'}`}>
               1
             </span>
-            <span>Identificação e Entrega</span>
+            <span className="hidden sm:inline">Identificação e Entrega</span>
+            <span className="sm:hidden">Entrega</span>
           </div>
 
-          <div className="w-8 h-px bg-stone-300"></div>
+          <div className="w-4 sm:w-8 h-px bg-stone-300"></div>
 
-          <div className={`flex items-center gap-1.5 font-bold ${step === 'payment' ? 'text-amber-800' : step === 'success' ? 'text-emerald-700' : 'text-stone-400'}`}>
-            <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${step === 'payment' ? 'bg-amber-600 text-white' : step === 'success' ? 'bg-emerald-600 text-white' : 'bg-stone-300 text-stone-700'}`}>
+          <div className={`flex items-center gap-1 sm:gap-1.5 font-bold ${step === 'payment' ? 'text-amber-800' : step === 'success' ? 'text-emerald-700' : 'text-stone-400'}`}>
+            <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] shrink-0 ${step === 'payment' ? 'bg-amber-600 text-white' : step === 'success' ? 'bg-emerald-600 text-white' : 'bg-stone-300 text-stone-700'}`}>
               2
             </span>
-            <span>Pagamento PIX</span>
+            <span className="hidden sm:inline">Pagamento PIX</span>
+            <span className="sm:hidden">PIX</span>
           </div>
 
-          <div className="w-8 h-px bg-stone-300"></div>
+          <div className="w-4 sm:w-8 h-px bg-stone-300"></div>
 
-          <div className={`flex items-center gap-1.5 font-bold ${step === 'success' ? 'text-emerald-700' : 'text-stone-400'}`}>
-            <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${step === 'success' ? 'bg-emerald-600 text-white' : 'bg-stone-300 text-stone-700'}`}>
+          <div className={`flex items-center gap-1 sm:gap-1.5 font-bold ${step === 'success' ? 'text-emerald-700' : 'text-stone-400'}`}>
+            <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] shrink-0 ${step === 'success' ? 'bg-emerald-600 text-white' : 'bg-stone-300 text-stone-700'}`}>
               3
             </span>
-            <span>Confirmação</span>
+            <span className="hidden sm:inline">Confirmação</span>
+            <span className="sm:hidden">Concluído</span>
           </div>
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 max-h-[75vh] overflow-y-auto">
+        <div className="p-3.5 sm:p-6 max-h-[75vh] overflow-y-auto touch-scroll">
+          {formError && (
+            <div className="mb-4 p-3 bg-rose-50 border border-rose-200 text-rose-800 rounded-xl text-xs font-medium">
+              {formError}
+            </div>
+          )}
           {/* STEP 1: Details and Address */}
           {step === 'details' && (
             <form onSubmit={handleSubmitDetails} className="space-y-4">

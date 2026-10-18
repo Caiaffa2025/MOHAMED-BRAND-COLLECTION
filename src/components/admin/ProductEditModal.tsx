@@ -45,11 +45,12 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({ product, onC
   });
 
   const [imgError, setImgError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim()) {
-      alert('O nome do perfume é obrigatório.');
+      setErrorMsg('O nome do perfume é obrigatório.');
       return;
     }
     if (isNew) {
@@ -61,8 +62,8 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({ product, onC
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-stone-950/80 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
-      <div className="relative bg-white rounded-3xl max-w-3xl w-full shadow-2xl border border-stone-200 overflow-hidden my-6 animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden bg-stone-950/80 backdrop-blur-xs flex items-center justify-center p-2.5 sm:p-4 touch-scroll w-full">
+      <div className="relative bg-white rounded-3xl max-w-3xl w-full shadow-2xl border border-stone-200 overflow-hidden my-4 sm:my-6 animate-in fade-in zoom-in-95 duration-200">
         {/* Header */}
         <div className="bg-stone-900 text-white p-4 sm:p-5 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -85,17 +86,31 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({ product, onC
         </div>
 
         {/* Form Body */}
-        <form onSubmit={handleSubmit} className="p-6 max-h-[75vh] overflow-y-auto space-y-5 text-xs text-stone-700">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 max-h-[75vh] overflow-y-auto touch-scroll space-y-4 sm:space-y-5 text-xs text-stone-700">
+          {errorMsg && (
+            <div className="p-3 bg-rose-50 border border-rose-200 text-rose-800 rounded-xl text-xs font-medium">
+              {errorMsg}
+            </div>
+          )}
+
           {/* Image & Main Info Preview */}
-          <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-start bg-stone-50 p-4 rounded-2xl border border-stone-200">
+          <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-start bg-stone-50 p-3.5 sm:p-4 rounded-2xl border border-stone-200">
             <div className="sm:col-span-4 flex flex-col items-center">
-              <div className="w-32 h-32 rounded-xl bg-white border border-stone-200 p-2 flex items-center justify-center overflow-hidden shadow-xs relative">
-                <img
-                  src={imgError ? 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80' : formData.image}
-                  alt={formData.name}
-                  onError={() => setImgError(true)}
-                  className="w-full h-full object-contain"
-                />
+              <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-xl bg-white border border-stone-200 p-2 flex items-center justify-center overflow-hidden shadow-xs relative">
+                {!imgError ? (
+                  <img
+                    src={formData.image}
+                    alt={formData.name}
+                    onError={() => setImgError(true)}
+                    className="w-full h-full object-contain"
+                    referrerPolicy="no-referrer"
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center text-center p-2">
+                    <span className="font-serif font-black text-2xl text-amber-800">M</span>
+                    <span className="text-[10px] text-stone-500 mt-1">Sem imagem</span>
+                  </div>
+                )}
               </div>
               <span className="text-[10px] text-stone-400 mt-1">Pré-visualização da imagem</span>
             </div>

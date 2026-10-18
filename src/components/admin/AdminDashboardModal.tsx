@@ -52,9 +52,16 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
     return matchesCat && matchesSearch;
   });
 
+  const [productToDelete, setProductToDelete] = useState<Product | null>(null);
+
   const handleDelete = (p: Product) => {
-    if (window.confirm(`Tem certeza que deseja excluir o perfume #${p.number} - "${p.name}"?`)) {
-      deleteProduct(p.id);
+    setProductToDelete(p);
+  };
+
+  const confirmDelete = () => {
+    if (productToDelete) {
+      deleteProduct(productToDelete.id);
+      setProductToDelete(null);
     }
   };
 
@@ -64,7 +71,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-stone-950/80 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4">
+    <div className="fixed inset-0 z-50 overflow-hidden bg-stone-950/80 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 w-full max-w-full">
       <div className="relative bg-white rounded-3xl max-w-6xl w-full h-[90vh] shadow-2xl border border-stone-200 overflow-hidden flex flex-col">
         {/* Admin Toast */}
         {adminToast && (
@@ -202,15 +209,41 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
             <div className="flex items-center gap-2 shrink-0">
               <button
                 onClick={() => setShowConfirmReset(false)}
-                className="px-2.5 py-1 rounded-md text-stone-600 hover:bg-stone-100 font-semibold"
+                className="px-2.5 py-1 rounded-md text-stone-600 hover:bg-stone-100 font-semibold cursor-pointer"
               >
                 Cancelar
               </button>
               <button
                 onClick={handleReset}
-                className="px-3 py-1 rounded-md bg-rose-600 hover:bg-rose-700 text-white font-bold shadow-xs"
+                className="px-3 py-1 rounded-md bg-rose-600 hover:bg-rose-700 text-white font-bold shadow-xs cursor-pointer"
               >
                 Sim, Restaurar
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Delete Confirmation Banner */}
+        {productToDelete && (
+          <div className="bg-amber-50 border-b border-amber-200 p-3 px-4 flex items-center justify-between text-xs text-amber-950 animate-in fade-in">
+            <div className="flex items-center gap-2">
+              <Trash2 className="w-4 h-4 text-rose-600 shrink-0" />
+              <span>
+                Tem certeza que deseja excluir o perfume <strong>#{productToDelete.number} - {productToDelete.name}</strong>?
+              </span>
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                onClick={() => setProductToDelete(null)}
+                className="px-2.5 py-1 rounded-md text-stone-600 hover:bg-stone-100 font-semibold cursor-pointer"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={confirmDelete}
+                className="px-3 py-1 rounded-md bg-rose-600 hover:bg-rose-700 text-white font-bold shadow-xs cursor-pointer"
+              >
+                Excluir Perfume
               </button>
             </div>
           </div>

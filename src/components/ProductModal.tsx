@@ -28,7 +28,9 @@ export const ProductModal: React.FC = () => {
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
   const [cep, setCep] = useState('');
+  const [cepError, setCepError] = useState('');
   const [calculatingShipping, setCalculatingShipping] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const [shippingResult, setShippingResult] = useState<{
     sedex: { price: number; days: string };
     pac: { price: number; days: string };
@@ -56,9 +58,10 @@ export const ProductModal: React.FC = () => {
 
   const calculateShipping = (e: React.FormEvent) => {
     e.preventDefault();
+    setCepError('');
     const cleanCep = cep.replace(/\D/g, '');
     if (cleanCep.length !== 8) {
-      alert('Por favor digite um CEP válido com 8 dígitos.');
+      setCepError('Por favor digite um CEP válido com 8 dígitos.');
       return;
     }
     setCalculatingShipping(true);
@@ -73,38 +76,49 @@ export const ProductModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-stone-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
-      <div className="relative bg-white rounded-3xl max-w-4xl w-full shadow-2xl border border-stone-200 overflow-hidden animate-in fade-in zoom-in-95 duration-200 my-8">
+    <div className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden bg-stone-950/70 backdrop-blur-xs flex items-center justify-center p-2.5 sm:p-4 touch-scroll w-full">
+      <div className="relative bg-white rounded-3xl max-w-4xl w-full shadow-2xl border border-stone-200 overflow-hidden animate-in fade-in zoom-in-95 duration-200 my-4 sm:my-8">
         {/* Close Button */}
         <button
           onClick={() => setSelectedProductForModal(null)}
-          className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-stone-900 transition cursor-pointer"
+          className="absolute top-3.5 right-3.5 z-20 p-2 sm:p-2.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-stone-900 transition cursor-pointer min-w-[40px] min-h-[40px] flex items-center justify-center"
           aria-label="Fechar modal"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 max-h-[85vh] overflow-y-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 max-h-[88vh] sm:max-h-[85vh] overflow-y-auto touch-scroll">
           {/* Left Column: Image and badges */}
-          <div className="md:col-span-5 bg-gradient-to-b from-stone-50 to-amber-50/30 p-6 flex flex-col justify-between items-center border-b md:border-b-0 md:border-r border-stone-200">
-            <div className="w-full flex justify-between items-center">
+          <div className="md:col-span-5 bg-gradient-to-b from-stone-50 to-amber-50/30 p-4 sm:p-6 flex flex-col justify-between items-center border-b md:border-b-0 md:border-r border-stone-200">
+            <div className="w-full flex justify-between items-center pr-10 md:pr-0">
               <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-md bg-stone-900 text-amber-300">
                 Código #{product.number}
               </span>
               <button
                 onClick={() => toggleFavorite(product.id)}
-                className="p-2 rounded-full bg-white shadow-xs border border-stone-200 text-stone-600 hover:text-rose-600 transition cursor-pointer"
+                className="p-2 rounded-full bg-white shadow-xs border border-stone-200 text-stone-600 hover:text-rose-600 transition cursor-pointer min-w-[36px] min-h-[36px] flex items-center justify-center"
+                aria-label="Favoritar"
               >
                 <Heart className={`w-4 h-4 ${isFav ? 'fill-rose-500 text-rose-500' : ''}`} />
               </button>
             </div>
 
-            <div className="my-6 relative w-full aspect-square max-w-[280px]">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-full object-contain filter drop-shadow-xl"
-              />
+            <div className="my-4 sm:my-6 relative w-full aspect-square max-w-[240px] sm:max-w-[280px]">
+              {!imgError ? (
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  onError={() => setImgError(true)}
+                  className="w-full h-full object-contain filter drop-shadow-xl"
+                  referrerPolicy="no-referrer"
+                />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center bg-stone-100 rounded-2xl p-4 text-center">
+                  <span className="font-serif font-black text-3xl text-amber-800">M</span>
+                  <span className="font-mono text-xs font-bold text-stone-800 mt-2">#{product.number}</span>
+                  <span className="text-xs font-semibold text-stone-700">{product.name}</span>
+                </div>
+              )}
             </div>
 
             <div className="w-full bg-white/80 backdrop-blur-xs rounded-xl p-3 border border-amber-200/60 text-xs space-y-1.5">
@@ -279,19 +293,25 @@ export const ProductModal: React.FC = () => {
                   <input
                     type="text"
                     value={cep}
-                    onChange={(e) => setCep(e.target.value)}
+                    onChange={(e) => {
+                      setCep(e.target.value);
+                      if (cepError) setCepError('');
+                    }}
                     placeholder="Ex: 01310-100"
                     maxLength={9}
-                    className="flex-1 bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-xs outline-none focus:border-amber-500"
+                    className="flex-1 bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-xs sm:text-xs outline-none focus:border-amber-500 font-mono"
                   />
                   <button
                     type="submit"
                     disabled={calculatingShipping}
-                    className="bg-stone-800 hover:bg-stone-900 text-white text-xs font-semibold px-4 py-2 rounded-lg transition cursor-pointer"
+                    className="bg-stone-800 hover:bg-stone-900 text-white text-xs font-semibold px-4 py-2 rounded-lg transition cursor-pointer shrink-0"
                   >
                     {calculatingShipping ? 'Calculando...' : 'Calcular'}
                   </button>
                 </div>
+                {cepError && (
+                  <p className="text-[11px] text-rose-600 font-medium">{cepError}</p>
+                )}
               </form>
 
               {shippingResult && (
