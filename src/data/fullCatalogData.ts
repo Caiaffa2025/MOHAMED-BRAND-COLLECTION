@@ -1,0 +1,255 @@
+export interface CatalogItem {
+  id: string;
+  number?: string;
+  name: string;
+  category: 'Feminino' | 'Masculino' | 'Unissex' | 'Kit';
+  volume: string;
+  sectionId: 'brand-25ml' | 'dream-25ml' | 'tubete-30ml' | 'tubete-arabe' | 'dream-large' | 'hidratante' | 'kits' | 'body-splash';
+  sectionTitle: string;
+  pageNumber: number;
+  description?: string;
+  inspiration?: string;
+}
+
+export interface CatalogSection {
+  id: 'all' | 'brand-25ml' | 'dream-25ml' | 'tubete-30ml' | 'tubete-arabe' | 'dream-large' | 'hidratante' | 'kits' | 'body-splash';
+  title: string;
+  subtitle: string;
+  pageRange: string;
+  icon: string;
+  itemCount: number;
+}
+
+export const CATALOG_SECTIONS: CatalogSection[] = [
+  { id: 'all', title: 'Todos os Itens', subtitle: 'Catálogo Geral Completo', pageRange: 'Págs. 1 a 59', icon: 'BookOpen', itemCount: 320 },
+  { id: 'brand-25ml', title: 'Brand 25ml', subtitle: 'Frascos Miniaturas 25ml', pageRange: 'Págs. 2 a 31', icon: 'Sparkles', itemCount: 160 },
+  { id: 'dream-25ml', title: 'Linha Dream 25ml', subtitle: 'Fragrâncias Dream 25ml', pageRange: 'Págs. 32 a 37', icon: 'Droplets', itemCount: 48 },
+  { id: 'tubete-30ml', title: 'Tubete 30ml', subtitle: 'Linha Prática em Tubete', pageRange: 'Págs. 38 a 42', icon: 'TestTube', itemCount: 63 },
+  { id: 'tubete-arabe', title: 'Tubete Árabe', subtitle: 'Perfumes Nobres Árabes 30ml', pageRange: 'Págs. 43 a 44', icon: 'Crown', itemCount: 5 },
+  { id: 'dream-large', title: 'Dream 80~100ml', subtitle: 'Frascos Grandes 80ml a 100ml', pageRange: 'Págs. 45 a 48', icon: 'Maximize2', itemCount: 26 },
+  { id: 'hidratante', title: 'Hidratantes 200ml', subtitle: 'Cremes Corporais Perfumados', pageRange: 'Págs. 49 a 51', icon: 'Heart', itemCount: 28 },
+  { id: 'kits', title: 'Kits Especiais', subtitle: 'Trios e Kits com Gel + Creme', pageRange: 'Págs. 52 a 56', icon: 'Gift', itemCount: 24 },
+  { id: 'body-splash', title: 'Body Splash 250ml', subtitle: 'Tradicional e Shimmer / Glitter', pageRange: 'Págs. 57 a 59', icon: 'Flame', itemCount: 14 }
+];
+
+export const CATALOG_ITEMS: CatalogItem[] = [
+  // --- BRAND 25ML (Págs 2-31) ---
+  { id: 'b25-001', number: '001', name: 'Allure Sport Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 2, inspiration: 'Allure Homme Sport (Chanel)' },
+  { id: 'b25-002', number: '002', name: 'Burberry London Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 2, inspiration: 'Burberry London (Burberry)' },
+  { id: 'b25-003', number: '003', name: 'CH Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 2, inspiration: 'CH (Carolina Herrera)' },
+  { id: 'b25-004', number: '004', name: 'CH Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 2, inspiration: 'CH Men (Carolina Herrera)' },
+  { id: 'b25-005', number: '005', name: '1 Million Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 2, inspiration: '1 Million (Paco Rabanne)' },
+  { id: 'b25-006', number: '006', name: 'Escada Magnetism Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 2, inspiration: 'Escada Magnetism (Escada)' },
+  { id: 'b25-007', number: '007', name: 'Jadore Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 2, inspiration: "J'adore (Christian Dior)" },
+  { id: 'b25-008', number: '008', name: '212 Vip Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 2, inspiration: '212 VIP Men (Carolina Herrera)' },
+  { id: 'b25-009', number: '009', name: '212 Vip Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 2, inspiration: '212 VIP (Carolina Herrera)' },
+  { id: 'b25-010', number: '010', name: 'Tom Ford Black Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 2, inspiration: 'Black Orchid (Tom Ford)' },
+  { id: 'b25-011', number: '011', name: 'Angel Ice Star Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 2, inspiration: 'Angel (Thierry Mugler)' },
+  { id: 'b25-012', number: '012', name: 'La Vie Est Belle Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 2, inspiration: 'La Vie Est Belle (Lancôme)' },
+
+  { id: 'b25-013', number: '013', name: 'La Petite Robe Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 3, inspiration: 'La Petite Robe Noire (Guerlain)' },
+  { id: 'b25-014', number: '014', name: 'Miss Dior Blooming Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 3, inspiration: 'Miss Dior Blooming Bouquet (Dior)' },
+  { id: 'b25-015', number: '015', name: 'Miss Dior Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 3, inspiration: 'Miss Dior (Christian Dior)' },
+  { id: 'b25-016', number: '016', name: 'Lacoste White Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 3, inspiration: 'Eau de Lacoste Blanc (Lacoste)' },
+  { id: 'b25-017', number: '017', name: 'Nina Ricci Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 3, inspiration: 'Nina (Nina Ricci)' },
+  { id: 'b25-018', number: '018', name: 'HB Just Different Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 3, inspiration: 'Hugo Just Different (Hugo Boss)' },
+  { id: 'b25-019', number: '019', name: 'XS Black Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 3, inspiration: 'Black XS for Her (Paco Rabanne)' },
+  { id: 'b25-020', number: '020', name: 'Poison Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 3, inspiration: 'Poison (Christian Dior)' },
+  { id: 'b25-021', number: '021', name: 'Coco Mademoiselle Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 3, inspiration: 'Coco Mademoiselle (Chanel)' },
+  { id: 'b25-023', number: '023', name: 'Crystal Noir Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 3, inspiration: 'Crystal Noir (Versace)' },
+  { id: 'b25-024', number: '024', name: 'Bright Crystal Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 3, inspiration: 'Bright Crystal (Versace)' },
+  { id: 'b25-025', number: '025', name: 'Eaudemoiselle Florale Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 3, inspiration: 'Eaudemoiselle de Givenchy (Givenchy)' },
+
+  { id: 'b25-026', number: '026', name: 'Irresistible Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 4, inspiration: 'Very Irresistible (Givenchy)' },
+  { id: 'b25-027', number: '027', name: 'Hypnotic Poison Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 4, inspiration: 'Hypnotic Poison (Christian Dior)' },
+  { id: 'b25-028', number: '028', name: 'HB Verde Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 4, inspiration: 'Hugo Man (Hugo Boss)' },
+  { id: 'b25-029', number: '029', name: 'Nina Elixir Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 4, inspiration: 'Nina L’Elixir (Nina Ricci)' },
+  { id: 'b25-030', number: '030', name: 'Crystal B. Absolu Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 4, inspiration: 'Bright Crystal Absolu (Versace)' },
+  { id: 'b25-031', number: '031', name: 'Chanel Tendre Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 4, inspiration: 'Chance Eau Tendre (Chanel)' },
+  { id: 'b25-032', number: '032', name: 'Vip Club Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 4, inspiration: '212 VIP Men Club Edition (CH)' },
+  { id: 'b25-033', number: '033', name: 'Vip Club Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 4, inspiration: '212 VIP Club Edition (CH)' },
+  { id: 'b25-034', number: '034', name: '212 Vip Rose Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 4, inspiration: '212 VIP Rosé (Carolina Herrera)' },
+  { id: 'b25-036', number: '036', name: 'EAU de Lacoste Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 4, inspiration: 'Eau de Lacoste (Lacoste)' },
+  { id: 'b25-037', number: '037', name: 'Nina Lextase Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 4, inspiration: 'L’Extase (Nina Ricci)' },
+  { id: 'b25-039', number: '039', name: 'Chanel Chance Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 4, inspiration: 'Chance Eau de Parfum (Chanel)' },
+
+  { id: 'b25-041', number: '041', name: 'Specially Escada Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 5, inspiration: 'Especially Escada (Escada)' },
+  { id: 'b25-042', number: '042', name: 'Envy Me Gucci Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 5, inspiration: 'Envy Me (Gucci)' },
+  { id: 'b25-043', number: '043', name: 'Alien Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 5, inspiration: 'Alien (Thierry Mugler)' },
+  { id: 'b25-044', number: '044', name: 'Manifesto Yves Saint Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 5, inspiration: 'Manifesto (Yves Saint Laurent)' },
+  { id: 'b25-045', number: '045', name: 'Burberry Body Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 5, inspiration: 'Burberry Body (Burberry)' },
+  { id: 'b25-046', number: '046', name: 'Mademoiselle Ricci Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 5, inspiration: 'Mademoiselle Ricci (Nina Ricci)' },
+  { id: 'b25-047', number: '047', name: 'Escada Cherry Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 5, inspiration: 'Cherry in the Air (Escada)' },
+  { id: 'b25-048', number: '048', name: 'Midnight Rose Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 5, inspiration: 'Trésor Midnight Rose (Lancôme)' },
+  { id: 'b25-049', number: '049', name: 'CH Sublime Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 5, inspiration: 'CH Eau de Parfum Sublime (CH)' },
+  { id: 'b25-050', number: '050', name: "Terre D'hermes Men", category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 5, inspiration: "Terre d'Hermès (Hermès)" },
+  { id: 'b25-051', number: '051', name: 'Narciso Rodrigues for her Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 5, inspiration: 'Narciso Rodriguez For Her' },
+  { id: 'b25-052', number: '052', name: 'Dior Addict Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 5, inspiration: 'Dior Addict (Christian Dior)' },
+
+  { id: 'b25-053', number: '053', name: 'Desire for man Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 6, inspiration: 'Desire for a Man (Dunhill)' },
+  { id: 'b25-054', number: '054', name: 'Creed Aventus Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 6, inspiration: 'Aventus (Creed)' },
+  { id: 'b25-055', number: '055', name: 'Yves Opium Black Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 6, inspiration: 'Black Opium (Yves Saint Laurent)' },
+  { id: 'b25-056', number: '056', name: 'Eaudemoiselle Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 6, inspiration: 'Eaudemoiselle (Givenchy)' },
+  { id: 'b25-057', number: '057', name: 'Valentina Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 6, inspiration: 'Valentina (Valentino)' },
+  { id: 'b25-058', number: '058', name: 'HB Orange Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 6, inspiration: 'Boss Orange for Men (Hugo Boss)' },
+  { id: 'b25-059', number: '059', name: 'Valentina Assoluto Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 6, inspiration: 'Valentina Assoluto (Valentino)' },
+  { id: 'b25-060', number: '060', name: 'Narciso F. Her Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 6, inspiration: 'Narciso Rodriguez For Her Fleur' },
+  { id: 'b25-061', number: '061', name: 'Dior Addict S. Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 6, inspiration: 'Dior Addict Shine (Christian Dior)' },
+  { id: 'b25-062', number: '062', name: 'Ricci Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 6, inspiration: 'Ricci Ricci (Nina Ricci)' },
+  { id: 'b25-063', number: '063', name: 'Si Armani Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 6, inspiration: 'Sì Eau de Parfum (Giorgio Armani)' },
+  { id: 'b25-064', number: '064', name: 'Elie Saab Parfum Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 6, inspiration: 'Le Parfum (Elie Saab)' },
+
+  { id: 'b25-065', number: '065', name: 'Ange ou Demon Le Parfum Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 7, inspiration: 'Ange ou Démon Le Parfum (Givenchy)' },
+  { id: 'b25-066', number: '066', name: 'Silver Scent Intense Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 7, inspiration: 'Silver Scent Intense (Jacques Bogart)' },
+  { id: 'b25-067', number: '067', name: 'Gucci Bamboo Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 7, inspiration: 'Gucci Bamboo (Gucci)' },
+  { id: 'b25-068', number: '068', name: 'Encre Noire Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 7, inspiration: 'Encre Noire (Lalique)' },
+  { id: 'b25-069', number: '069', name: 'La Nuit Tresor Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 7, inspiration: 'La Nuit Trésor (Lancôme)' },
+  { id: 'b25-070', number: '070', name: 'Bleu Chanel Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 7, inspiration: 'Bleu de Chanel (Chanel)' },
+  { id: 'b25-071', number: '071', name: 'Creed Silver Mountain Uni', category: 'Unissex', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 7, inspiration: 'Silver Mountain Water (Creed)' },
+  { id: 'b25-072', number: '072', name: 'Nero Assoluto Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 7, inspiration: 'Nero Assoluto (Roberto Cavalli)' },
+  { id: 'b25-073', number: '073', name: 'Poison Girl Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 7, inspiration: 'Poison Girl (Christian Dior)' },
+  { id: 'b25-074', number: '074', name: 'Si Rose Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 7, inspiration: 'Sì Rose Signature (Giorgio Armani)' },
+  { id: 'b25-075', number: '075', name: 'Opium Black Nuit Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 7, inspiration: 'Black Opium Nuit Blanche (YSL)' },
+  { id: 'b25-076', number: '076', name: 'La Vie Intense Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 7, inspiration: 'La Vie Est Belle L’Absolu (Lancôme)' },
+
+  { id: 'b25-077', number: '077', name: 'Nina Extase Rose Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 8, inspiration: 'L’Extase Caresse de Roses (Nina Ricci)' },
+  { id: 'b25-078', number: '078', name: 'Vip Wild Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 8, inspiration: '212 VIP Wild Party (CH)' },
+  { id: 'b25-079', number: '079', name: 'Vip Wild Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 8, inspiration: '212 VIP Men Wild Party (CH)' },
+  { id: 'b25-080', number: '080', name: 'Ange Ou Demon Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 8, inspiration: 'Ange ou Démon (Givenchy)' },
+  { id: 'b25-081', number: '081', name: 'Lalique Amethyst Eclat Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 8, inspiration: 'Amethyst Éclat (Lalique)' },
+  { id: 'b25-082', number: '082', name: 'Fahrenheit Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 8, inspiration: 'Fahrenheit (Christian Dior)' },
+  { id: 'b25-083', number: '083', name: 'MB Legend Spirit Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 8, inspiration: 'Legend Spirit (Montblanc)' },
+  { id: 'b25-084', number: '084', name: 'MB Legend Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 8, inspiration: 'Legend (Montblanc)' },
+  { id: 'b25-085', number: '085', name: 'D&G Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 8, inspiration: 'Pour Femme (Dolce & Gabbana)' },
+  { id: 'b25-086', number: '086', name: 'Black Afgano Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 8, inspiration: 'Black Afgano (Nasomatto)' },
+  { id: 'b25-087', number: '087', name: 'Olympea Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 8, inspiration: 'Olympéa (Paco Rabanne)' },
+  { id: 'b25-088', number: '088', name: 'D&G Intense Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 8, inspiration: 'Pour Femme Intense (Dolce & Gabbana)' },
+
+  { id: 'b25-100', number: '100', name: 'Sauvage Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 9, inspiration: 'Sauvage (Christian Dior)' },
+  { id: 'b25-105', number: '105', name: 'Lady Million Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 10, inspiration: 'Lady Million (Paco Rabanne)' },
+  { id: 'b25-116', number: '116', name: 'Invictus Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 11, inspiration: 'Invictus (Paco Rabanne)' },
+  { id: 'b25-126', number: '126', name: 'Good Girl Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 31, inspiration: 'Good Girl (Carolina Herrera)' },
+  { id: 'b25-136', number: '136', name: 'Scandal Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 12, inspiration: 'Scandal (Jean Paul Gaultier)' },
+  { id: 'b25-137', number: '137', name: 'Gucci Bloom Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 12, inspiration: 'Gucci Bloom (Gucci)' },
+  { id: 'b25-151', number: '151', name: 'Delina Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 13, inspiration: 'Delina (Parfums de Marly)' },
+  { id: 'b25-154', number: '154', name: '212 Vip Black Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 13, inspiration: '212 VIP Black (Carolina Herrera)' },
+  { id: 'b25-159', number: '159', name: 'YSL Libre Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 14, inspiration: 'Libre (Yves Saint Laurent)' },
+  { id: 'b25-168', number: '168', name: 'Angel Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 15, inspiration: 'Angel (Thierry Mugler)' },
+  { id: 'b25-188', number: '188', name: 'My Way Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 16, inspiration: 'My Way (Giorgio Armani)' },
+  { id: 'b25-247', number: '247', name: 'Baccarat Rouge 540 Uni', category: 'Unissex', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 20, inspiration: 'Baccarat Rouge 540 (Maison Francis Kurkdjian)' },
+  { id: 'b25-296', number: '296', name: 'Phantom Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 23, inspiration: 'Phantom (Paco Rabanne)' },
+  { id: 'b25-315', number: '315', name: 'Sauvage Elixir Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 24, inspiration: 'Sauvage Elixir (Christian Dior)' },
+  { id: 'b25-323', number: '323', name: 'Jean Paul Le Male Elixir Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 24, inspiration: 'Le Male Elixir (Jean Paul Gaultier)' },
+  { id: 'b25-325', number: '325', name: 'Jean Paul Le Male Parfum Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 24, inspiration: 'Le Male Le Parfum (Jean Paul Gaultier)' },
+  { id: 'b25-380', number: '380', name: 'Baccarat Rouge Extrait Uni', category: 'Unissex', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 28, inspiration: 'Baccarat Rouge 540 Extrait (MFK)' },
+  { id: 'b25-401', number: '401', name: 'Prada Paradoxe Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 29, inspiration: 'Paradoxe (Prada)' },
+  { id: 'b25-402', number: '402', name: 'Erba Pura Uni', category: 'Unissex', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 29, inspiration: 'Erba Pura (Xerjoff)' },
+  { id: 'b25-433', number: '433', name: 'YSL Myslf Men', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 30, inspiration: 'MYSLF (Yves Saint Laurent)' },
+  { id: 'b25-435', number: '435', name: 'Burberry Goddess Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 30, inspiration: 'Burberry Goddess (Burberry)' },
+
+  // Good Girl Flankers / Sapatinho (Pág 31)
+  { id: 'b25-173', number: '173', name: 'Good Girl Légère Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 31, inspiration: 'Good Girl Légère (Carolina Herrera)' },
+  { id: 'b25-181', number: '181', name: 'Bad Boy Men (Raio)', category: 'Masculino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 31, inspiration: 'Bad Boy (Carolina Herrera)' },
+  { id: 'b25-193', number: '193', name: 'Good Girl Velvet Fatale Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 31, inspiration: 'Good Girl Velvet Fatale (CH)' },
+  { id: 'b25-267', number: '267', name: 'Good Girl Suprême Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 31, inspiration: 'Good Girl Suprême (Carolina Herrera)' },
+  { id: 'b25-297', number: '297', name: 'Very Good Girl Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 31, inspiration: 'Very Good Girl (Carolina Herrera)' },
+  { id: 'b25-332', number: '332', name: 'Very Good Girl Glam Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 31, inspiration: 'Very Good Girl Glam (CH)' },
+  { id: 'b25-357', number: '357', name: 'Good Girl Midnight Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 31, inspiration: 'Good Girl Midnight (Carolina Herrera)' },
+  { id: 'b25-372', number: '372', name: 'Good Girl Gold Fantasy Fem', category: 'Feminino', volume: '25ml', sectionId: 'brand-25ml', sectionTitle: 'Brand 25ml', pageNumber: 31, inspiration: 'Good Girl Gold Fantasy (CH)' },
+
+  // --- TUBETE ÁRABE 30ML (Págs 43-44) ---
+  { id: 'tar-440', number: '440', name: 'Fakhar Rose Fem (Árabe)', category: 'Feminino', volume: '30ml', sectionId: 'tubete-arabe', sectionTitle: 'Tubete Árabe 30ml', pageNumber: 44, inspiration: 'Fakhar Lattafa (Lattafa Perfumes)' },
+  { id: 'tar-441', number: '441', name: 'Yara Fem (Árabe Mais Vendido)', category: 'Feminino', volume: '30ml', sectionId: 'tubete-arabe', sectionTitle: 'Tubete Árabe 30ml', pageNumber: 44, inspiration: 'Yara Lattafa (Lattafa Perfumes)' },
+  { id: 'tar-442', number: '442', name: 'Royal Amber Fem (Árabe)', category: 'Feminino', volume: '30ml', sectionId: 'tubete-arabe', sectionTitle: 'Tubete Árabe 30ml', pageNumber: 44, inspiration: 'Royal Amber (Orientica Luxury)' },
+  { id: 'tar-446', number: '446', name: 'Khamrah Men / Uni (Árabe Gourmand)', category: 'Unissex', volume: '30ml', sectionId: 'tubete-arabe', sectionTitle: 'Tubete Árabe 30ml', pageNumber: 44, inspiration: 'Khamrah (Lattafa Perfumes)' },
+  { id: 'tar-465', number: '465', name: 'Sabah Fem (Árabe Luxo)', category: 'Feminino', volume: '30ml', sectionId: 'tubete-arabe', sectionTitle: 'Tubete Árabe 30ml', pageNumber: 44, inspiration: 'Sabah Al Ward (Al Wataniah)' },
+
+  // --- TUBETES 30ML (Págs 38-42) ---
+  { id: 'tub-001', number: '001', name: 'Tubete Allure Sport Men', category: 'Masculino', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 39, inspiration: 'Allure Homme Sport (Chanel)' },
+  { id: 'tub-005', number: '005', name: 'Tubete 1 Million Men', category: 'Masculino', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 39, inspiration: '1 Million (Paco Rabanne)' },
+  { id: 'tub-007', number: '007', name: 'Tubete Jadore Fem', category: 'Feminino', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 39, inspiration: "J'adore (Dior)" },
+  { id: 'tub-008', number: '008', name: 'Tubete 212 Vip Men', category: 'Masculino', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 39, inspiration: '212 VIP Men (CH)' },
+  { id: 'tub-009', number: '009', name: 'Tubete 212 Vip Fem', category: 'Feminino', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 39, inspiration: '212 VIP (CH)' },
+  { id: 'tub-012', number: '012', name: 'Tubete La Vie Est Belle Fem', category: 'Feminino', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 39, inspiration: 'La Vie Est Belle (Lancôme)' },
+  { id: 'tub-034', number: '034', name: 'Tubete 212 Vip Rose Fem', category: 'Feminino', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 39, inspiration: '212 VIP Rosé (CH)' },
+  { id: 'tub-070', number: '070', name: 'Tubete Bleu Chanel Men', category: 'Masculino', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 40, inspiration: 'Bleu de Chanel (Chanel)' },
+  { id: 'tub-087', number: '087', name: 'Tubete Olympea Fem', category: 'Feminino', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 40, inspiration: 'Olympéa (Paco Rabanne)' },
+  { id: 'tub-100', number: '100', name: 'Tubete Sauvage Men', category: 'Masculino', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 40, inspiration: 'Sauvage (Dior)' },
+  { id: 'tub-116', number: '116', name: 'Tubete Invictus Men', category: 'Masculino', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 40, inspiration: 'Invictus (Paco Rabanne)' },
+  { id: 'tub-126', number: '126', name: 'Tubete Good Girl Fem', category: 'Feminino', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 40, inspiration: 'Good Girl (Carolina Herrera)' },
+  { id: 'tub-136', number: '136', name: 'Tubete Scandal Fem', category: 'Feminino', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 40, inspiration: 'Scandal (Jean Paul Gaultier)' },
+  { id: 'tub-154', number: '154', name: 'Tubete 212 Vip Black Men', category: 'Masculino', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 41, inspiration: '212 VIP Black (CH)' },
+  { id: 'tub-188', number: '188', name: 'Tubete My Way Fem', category: 'Feminino', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 41, inspiration: 'My Way (Giorgio Armani)' },
+  { id: 'tub-380', number: '380', name: 'Tubete Baccarat R. Extrait Uni', category: 'Unissex', volume: '30ml', sectionId: 'tubete-30ml', sectionTitle: 'Tubete 30ml', pageNumber: 42, inspiration: 'Baccarat Rouge 540 Extrait' },
+
+  // --- DREAM 80~100ML (Págs 45-48) ---
+  { id: 'd100-001', number: '001', name: 'Dream Allure Sport Men', category: 'Masculino', volume: '80~100ml', sectionId: 'dream-large', sectionTitle: 'Dream 80~100ml', pageNumber: 46, inspiration: 'Allure Homme Sport (Chanel)' },
+  { id: 'd100-005', number: '005', name: 'Dream 1 Million Men', category: 'Masculino', volume: '80~100ml', sectionId: 'dream-large', sectionTitle: 'Dream 80~100ml', pageNumber: 46, inspiration: '1 Million (Paco Rabanne)' },
+  { id: 'd100-007', number: '007', name: 'Dream Jadore Fem', category: 'Feminino', volume: '80~100ml', sectionId: 'dream-large', sectionTitle: 'Dream 80~100ml', pageNumber: 46, inspiration: "J'adore (Dior)" },
+  { id: 'd100-012', number: '012', name: 'Dream La Vie Est Belle Fem', category: 'Feminino', volume: '80~100ml', sectionId: 'dream-large', sectionTitle: 'Dream 80~100ml', pageNumber: 46, inspiration: 'La Vie Est Belle (Lancôme)' },
+  { id: 'd100-070', number: '070', name: 'Dream Bleu Chanel Men', category: 'Masculino', volume: '80~100ml', sectionId: 'dream-large', sectionTitle: 'Dream 80~100ml', pageNumber: 46, inspiration: 'Bleu de Chanel (Chanel)' },
+  { id: 'd100-087', number: '087', name: 'Dream Olympea Fem', category: 'Feminino', volume: '80~100ml', sectionId: 'dream-large', sectionTitle: 'Dream 80~100ml', pageNumber: 46, inspiration: 'Olympéa (Paco Rabanne)' },
+  { id: 'd100-100', number: '100', name: 'Dream Sauvage Men', category: 'Masculino', volume: '80~100ml', sectionId: 'dream-large', sectionTitle: 'Dream 80~100ml', pageNumber: 47, inspiration: 'Sauvage (Dior)' },
+  { id: 'd100-116', number: '116', name: 'Dream Invictus Men', category: 'Masculino', volume: '80~100ml', sectionId: 'dream-large', sectionTitle: 'Dream 80~100ml', pageNumber: 47, inspiration: 'Invictus (Paco Rabanne)' },
+  { id: 'd100-126', number: '126', name: 'Dream Good Girl Fem (Sapatinho)', category: 'Feminino', volume: '80~100ml', sectionId: 'dream-large', sectionTitle: 'Dream 80~100ml', pageNumber: 47, inspiration: 'Good Girl (Carolina Herrera)' },
+  { id: 'd100-136', number: '136', name: 'Dream Scandal Fem', category: 'Feminino', volume: '80~100ml', sectionId: 'dream-large', sectionTitle: 'Dream 80~100ml', pageNumber: 47, inspiration: 'Scandal (Jean Paul Gaultier)' },
+  { id: 'd100-151', number: '151', name: 'Dream Delina Fem', category: 'Feminino', volume: '80~100ml', sectionId: 'dream-large', sectionTitle: 'Dream 80~100ml', pageNumber: 47, inspiration: 'Delina (Parfums de Marly)' },
+  { id: 'd100-154', number: '154', name: 'Dream 212 Vip Black Men', category: 'Masculino', volume: '80~100ml', sectionId: 'dream-large', sectionTitle: 'Dream 80~100ml', pageNumber: 47, inspiration: '212 VIP Black (CH)' },
+  { id: 'd100-188', number: '188', name: 'Dream My Way Fem', category: 'Feminino', volume: '80~100ml', sectionId: 'dream-large', sectionTitle: 'Dream 80~100ml', pageNumber: 47, inspiration: 'My Way (Giorgio Armani)' },
+  { id: 'd100-380', number: '380', name: 'Dream Baccarat R. Extrait Uni', category: 'Unissex', volume: '80~100ml', sectionId: 'dream-large', sectionTitle: 'Dream 80~100ml', pageNumber: 48, inspiration: 'Baccarat Rouge Extrait (MFK)' },
+
+  // --- HIDRATANTES 200ML (Págs 49-51) ---
+  { id: 'hid-001', number: '001', name: 'Hidratante Allure Sport Men', category: 'Masculino', volume: '200ml', sectionId: 'hidratante', sectionTitle: 'Hidratante 200ml', pageNumber: 50, inspiration: 'Allure Homme Sport (Chanel)' },
+  { id: 'hid-005', number: '005', name: 'Hidratante 1 Million Men', category: 'Masculino', volume: '200ml', sectionId: 'hidratante', sectionTitle: 'Hidratante 200ml', pageNumber: 50, inspiration: '1 Million (Paco Rabanne)' },
+  { id: 'hid-007', number: '007', name: 'Hidratante Jadore Fem', category: 'Feminino', volume: '200ml', sectionId: 'hidratante', sectionTitle: 'Hidratante 200ml', pageNumber: 50, inspiration: "J'adore (Dior)" },
+  { id: 'hid-012', number: '012', name: 'Hidratante La Vie Est Belle Fem', category: 'Feminino', volume: '200ml', sectionId: 'hidratante', sectionTitle: 'Hidratante 200ml', pageNumber: 50, inspiration: 'La Vie Est Belle (Lancôme)' },
+  { id: 'hid-034', number: '034', name: 'Hidratante 212 Vip Rose Fem', category: 'Feminino', volume: '200ml', sectionId: 'hidratante', sectionTitle: 'Hidratante 200ml', pageNumber: 50, inspiration: '212 VIP Rosé (CH)' },
+  { id: 'hid-070', number: '070', name: 'Hidratante Bleu Chanel Men', category: 'Masculino', volume: '200ml', sectionId: 'hidratante', sectionTitle: 'Hidratante 200ml', pageNumber: 50, inspiration: 'Bleu de Chanel (Chanel)' },
+  { id: 'hid-087', number: '087', name: 'Hidratante Olympea Fem', category: 'Feminino', volume: '200ml', sectionId: 'hidratante', sectionTitle: 'Hidratante 200ml', pageNumber: 50, inspiration: 'Olympéa (Paco Rabanne)' },
+  { id: 'hid-100', number: '100', name: 'Hidratante Sauvage Men', category: 'Masculino', volume: '200ml', sectionId: 'hidratante', sectionTitle: 'Hidratante 200ml', pageNumber: 50, inspiration: 'Sauvage (Dior)' },
+  { id: 'hid-116', number: '116', name: 'Hidratante Invictus Men', category: 'Masculino', volume: '200ml', sectionId: 'hidratante', sectionTitle: 'Hidratante 200ml', pageNumber: 51, inspiration: 'Invictus (Paco Rabanne)' },
+  { id: 'hid-126', number: '126', name: 'Hidratante Good Girl Fem', category: 'Feminino', volume: '200ml', sectionId: 'hidratante', sectionTitle: 'Hidratante 200ml', pageNumber: 51, inspiration: 'Good Girl (Carolina Herrera)' },
+  { id: 'hid-136', number: '136', name: 'Hidratante Scandal Fem', category: 'Feminino', volume: '200ml', sectionId: 'hidratante', sectionTitle: 'Hidratante 200ml', pageNumber: 51, inspiration: 'Scandal (Jean Paul Gaultier)' },
+  { id: 'hid-151', number: '151', name: 'Hidratante Delina Fem', category: 'Feminino', volume: '200ml', sectionId: 'hidratante', sectionTitle: 'Hidratante 200ml', pageNumber: 51, inspiration: 'Delina (Parfums de Marly)' },
+  { id: 'hid-164', number: '164', name: 'Hidratante Armani Code Men', category: 'Masculino', volume: '200ml', sectionId: 'hidratante', sectionTitle: 'Hidratante 200ml', pageNumber: 51, inspiration: 'Armani Code (Giorgio Armani)' },
+  { id: 'hid-181', number: '181', name: 'Hidratante Bad Boy Men', category: 'Masculino', volume: '200ml', sectionId: 'hidratante', sectionTitle: 'Hidratante 200ml', pageNumber: 51, inspiration: 'Bad Boy (Carolina Herrera)' },
+  { id: 'hid-247', number: '247', name: 'Hidratante Baccarat Rouge UNI', category: 'Unissex', volume: '200ml', sectionId: 'hidratante', sectionTitle: 'Hidratante 200ml', pageNumber: 51, inspiration: 'Baccarat Rouge 540' },
+
+  // --- KITS ESPECIAIS (Págs 52-56) ---
+  { id: 'kit-01', number: 'KIT 01', name: 'Kit 01 Trio Feminino (Olympea + Scandal + La Vie)', category: 'Kit', volume: 'Trio 3x25ml', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 53, description: 'Estojo especial luxo com 3 perfumes miniaturas femininos 25ml' },
+  { id: 'kit-02', number: 'KIT 02', name: 'Kit 02 Trio Feminino (Coco Madem + Jadore + 212 Vip Rose)', category: 'Kit', volume: 'Trio 3x25ml', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 53, description: 'Estojo especial luxo com 3 perfumes miniaturas femininos 25ml' },
+  { id: 'kit-03', number: 'KIT 03', name: 'Kit 03 Trio Feminino (Chloe + Lady Million + La Nuit)', category: 'Kit', volume: 'Trio 3x25ml', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 53, description: 'Estojo especial luxo com 3 perfumes miniaturas femininos 25ml' },
+  { id: 'kit-04', number: 'KIT 04', name: 'Kit 04 Trio Feminino (Alien + Angel + Hypnotic Poison)', category: 'Kit', volume: 'Trio 3x25ml', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 53, description: 'Estojo especial luxo com 3 perfumes miniaturas femininos 25ml' },
+  { id: 'kit-05', number: 'KIT 05', name: 'Kit 05 Trio Feminino (Olympea + Good Girl + 212 Vip Rose)', category: 'Kit', volume: 'Trio 3x25ml', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 53, description: 'Estojo especial luxo com 3 perfumes miniaturas femininos 25ml' },
+  { id: 'kit-06', number: 'KIT 06', name: 'Kit 06 Trio Feminino (Scandal + Good Girl + Jadore)', category: 'Kit', volume: 'Trio 3x25ml', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 53, description: 'Estojo especial luxo com 3 perfumes miniaturas femininos 25ml' },
+  { id: 'kit-07', number: 'KIT 07', name: 'Kit 07 Trio Feminino (Coco Madem + Good Girl + La Vie)', category: 'Kit', volume: 'Trio 3x25ml', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 53, description: 'Estojo especial luxo com 3 perfumes miniaturas femininos 25ml' },
+  { id: 'kit-08', number: 'KIT 08', name: 'Kit 08 Trio Feminino (My Way + Good Girl + 212 Sexy)', category: 'Kit', volume: 'Trio 3x25ml', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 53, description: 'Estojo especial luxo com 3 perfumes miniaturas femininos 25ml' },
+  { id: 'kit-09', number: 'KIT 09', name: 'Kit 09 Trio Feminino (Idole + Good Girl + Delina)', category: 'Kit', volume: 'Trio 3x25ml', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 54, description: 'Estojo especial luxo com 3 perfumes miniaturas femininos 25ml' },
+  { id: 'kit-10', number: 'KIT 10', name: 'Kit 10 Trio Feminino (Idole + Delina + My Way)', category: 'Kit', volume: 'Trio 3x25ml', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 54, description: 'Estojo especial luxo com 3 perfumes miniaturas femininos 25ml' },
+  { id: 'kit-m01', number: 'KIT 01 MEN', name: 'Kit 01 Trio Masculino (Vip Men + Invictus + 1 Million)', category: 'Kit', volume: 'Trio 3x25ml', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 54, description: 'Estojo especial luxo com 3 perfumes miniaturas masculinos 25ml' },
+  { id: 'kit-m02', number: 'KIT 02 MEN', name: 'Kit 02 Trio Masculino (Sauvage + Bleu Chanel + Vip Black)', category: 'Kit', volume: 'Trio 3x25ml', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 54, description: 'Estojo especial luxo com 3 perfumes miniaturas masculinos 25ml' },
+  { id: 'kit-m03', number: 'KIT 03 MEN', name: 'Kit 03 Trio Masculino (Allure Sport + Invictus + Phantom)', category: 'Kit', volume: 'Trio 3x25ml', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 54, description: 'Estojo especial luxo com 3 perfumes miniaturas masculinos 25ml' },
+  { id: 'kit-005', number: 'KIT 005', name: 'Kit 1 Million Men (Perfume + Gel de Banho + Creme)', category: 'Kit', volume: 'Perfume + Gel + Creme', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 54, description: 'Kit presente luxo completo: Perfume 25ml + Gel de Banho + Creme Hidratante' },
+  { id: 'kit-007', number: 'KIT 007', name: 'Kit Jadore Fem (Perfume + Gel de Banho + Creme)', category: 'Kit', volume: 'Perfume + Gel + Creme', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 54, description: 'Kit presente luxo completo: Perfume 25ml + Gel de Banho + Creme Hidratante' },
+  { id: 'kit-012', number: 'KIT 012', name: 'Kit La Vie Est Belle Fem (Perfume + Gel + Creme)', category: 'Kit', volume: 'Perfume + Gel + Creme', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 55, description: 'Kit presente luxo completo: Perfume 25ml + Gel de Banho + Creme Hidratante' },
+  { id: 'kit-070', number: 'KIT 070', name: 'Kit Bleu Chanel Men (Perfume + Gel + Creme)', category: 'Kit', volume: 'Perfume + Gel + Creme', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 55, description: 'Kit presente luxo completo: Perfume 25ml + Gel de Banho + Creme Hidratante' },
+  { id: 'kit-087', number: 'KIT 087', name: 'Kit Olympea Fem (Perfume + Gel + Creme)', category: 'Kit', volume: 'Perfume + Gel + Creme', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 55, description: 'Kit presente luxo completo: Perfume 25ml + Gel de Banho + Creme Hidratante' },
+  { id: 'kit-100', number: 'KIT 100', name: 'Kit Sauvage Men (Perfume + Gel + Creme)', category: 'Kit', volume: 'Perfume + Gel + Creme', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 55, description: 'Kit presente luxo completo: Perfume 25ml + Gel de Banho + Creme Hidratante' },
+  { id: 'kit-116', number: 'KIT 116', name: 'Kit Invictus Men (Perfume + Gel + Creme)', category: 'Kit', volume: 'Perfume + Gel + Creme', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 55, description: 'Kit presente luxo completo: Perfume 25ml + Gel de Banho + Creme Hidratante' },
+  { id: 'kit-126', number: 'KIT 126', name: 'Kit Good Girl Fem (Perfume + Gel + Creme)', category: 'Kit', volume: 'Perfume + Gel + Creme', sectionId: 'kits', sectionTitle: 'Kits Especiais', pageNumber: 56, description: 'Kit presente luxo com Sapatinho 25ml + Gel de Banho + Creme' },
+
+  // --- BODY SPLASH 250ML (Págs 57-59) ---
+  { id: 'bs-01', name: 'Body Splash Strawberries Champagne', category: 'Feminino', volume: '250ml', sectionId: 'body-splash', sectionTitle: 'Body Splash 250ml', pageNumber: 58, inspiration: 'Strawberries & Champagne (Victoria Secret)' },
+  { id: 'bs-02', name: 'Body Splash Velvet Petals', category: 'Feminino', volume: '250ml', sectionId: 'body-splash', sectionTitle: 'Body Splash 250ml', pageNumber: 58, inspiration: 'Velvet Petals (Victoria Secret)' },
+  { id: 'bs-03', name: 'Body Splash Pure Seduction', category: 'Feminino', volume: '250ml', sectionId: 'body-splash', sectionTitle: 'Body Splash 250ml', pageNumber: 58, inspiration: 'Pure Seduction (Victoria Secret)' },
+  { id: 'bs-04', name: 'Body Splash Pear Glace', category: 'Feminino', volume: '250ml', sectionId: 'body-splash', sectionTitle: 'Body Splash 250ml', pageNumber: 58, inspiration: 'Pear Glacé (Victoria Secret)' },
+  { id: 'bs-05', name: 'Body Splash Coconut Passion', category: 'Feminino', volume: '250ml', sectionId: 'body-splash', sectionTitle: 'Body Splash 250ml', pageNumber: 58, inspiration: 'Coconut Passion (Victoria Secret)' },
+  { id: 'bs-06', name: 'Body Splash Bare Vanilla', category: 'Feminino', volume: '250ml', sectionId: 'body-splash', sectionTitle: 'Body Splash 250ml', pageNumber: 58, inspiration: 'Bare Vanilla (Victoria Secret)' },
+  { id: 'bs-07', name: 'Body Splash Velvet Petals Shimmer (Glitter)', category: 'Feminino', volume: '250ml', sectionId: 'body-splash', sectionTitle: 'Body Splash 250ml', pageNumber: 59, inspiration: 'Velvet Petals Shimmer Iluminador' },
+  { id: 'bs-08', name: 'Body Splash Strawberries Shimmer (Glitter)', category: 'Feminino', volume: '250ml', sectionId: 'body-splash', sectionTitle: 'Body Splash 250ml', pageNumber: 59, inspiration: 'Strawberries Champagne Shimmer' },
+  { id: 'bs-09', name: 'Body Splash Pear Glace Shimmer (Glitter)', category: 'Feminino', volume: '250ml', sectionId: 'body-splash', sectionTitle: 'Body Splash 250ml', pageNumber: 59, inspiration: 'Pear Glacé Shimmer Iluminador' },
+  { id: 'bs-10', name: 'Body Splash Pure Seduction Shimmer (Glitter)', category: 'Feminino', volume: '250ml', sectionId: 'body-splash', sectionTitle: 'Body Splash 250ml', pageNumber: 59, inspiration: 'Pure Seduction Shimmer Iluminador' },
+  { id: 'bs-11', name: 'Body Splash Coconut Shimmer (Glitter)', category: 'Feminino', volume: '250ml', sectionId: 'body-splash', sectionTitle: 'Body Splash 250ml', pageNumber: 59, inspiration: 'Coconut Passion Shimmer Iluminador' },
+  { id: 'bs-12', name: 'Body Splash Love Spell Shimmer (Glitter)', category: 'Feminino', volume: '250ml', sectionId: 'body-splash', sectionTitle: 'Body Splash 250ml', pageNumber: 59, inspiration: 'Love Spell Shimmer (Victoria Secret)' },
+  { id: 'bs-13', name: 'Body Splash Bare Vanilla Shimmer (Glitter)', category: 'Feminino', volume: '250ml', sectionId: 'body-splash', sectionTitle: 'Body Splash 250ml', pageNumber: 59, inspiration: 'Bare Vanilla Shimmer Iluminador' },
+];

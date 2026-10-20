@@ -16,7 +16,7 @@ import { useProducts } from '../context/ProductContext';
 import { STORE_CONFIG } from '../config/store';
 
 export const Footer: React.FC = () => {
-  const { setIsInspirationGuideOpen } = useCart();
+  const { setIsInspirationGuideOpen, setIsCatalogOpen, setIsWholesalePopupOpen } = useCart();
   const { openAdmin, isAdminLoggedIn } = useProducts();
 
   const scrollToTop = () => {
@@ -130,6 +130,27 @@ export const Footer: React.FC = () => {
               </button>
             </li>
             <li>
+              <a
+                href="#catalogo"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsCatalogOpen(true);
+                }}
+                data-catalog-trigger="catalog"
+                className="text-amber-300 hover:text-amber-200 font-semibold transition cursor-pointer flex items-center gap-1.5"
+              >
+                <span>📖 Catálogo Oficial Completo (59 Págs)</span>
+              </a>
+            </li>
+            <li>
+              <button
+                onClick={() => setIsWholesalePopupOpen(true)}
+                className="text-amber-400 hover:text-amber-300 font-semibold transition cursor-pointer flex items-center gap-1.5"
+              >
+                <span>🏷️ Atacado: Mínimo 6 Peças R$ 49,99 (Ver Regras)</span>
+              </button>
+            </li>
+            <li>
               <button
                 onClick={() => setIsInspirationGuideOpen(true)}
                 className="hover:text-amber-400 transition cursor-pointer"
@@ -138,13 +159,18 @@ export const Footer: React.FC = () => {
               </button>
             </li>
             <li className="pt-1">
-              <button
-                onClick={openAdmin}
+              <a
+                href="#admin"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openAdmin();
+                }}
+                data-admin-trigger="admin"
                 className="text-amber-400/90 hover:text-amber-300 font-semibold flex items-center gap-1.5 transition underline underline-offset-4 cursor-pointer"
               >
                 <Lock className="w-3.5 h-3.5" />
-                <span>{isAdminLoggedIn ? 'Painel Administrativo (Ativo)' : 'Painel do Administrador (Senha 1966)'}</span>
-              </button>
+                <span>{isAdminLoggedIn ? 'Painel Administrativo (Conectado)' : 'Painel do Administrador'}</span>
+              </a>
             </li>
           </ul>
         </div>

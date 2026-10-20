@@ -20,7 +20,8 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
     cartTotal, 
     favorites, 
     setIsCartOpen, 
-    setIsInspirationGuideOpen
+    setIsInspirationGuideOpen,
+    setIsCatalogOpen
   } = useCart();
 
   return (
@@ -29,13 +30,13 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
       className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-stone-200/90 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] px-2 py-1.5 w-full max-w-full overflow-hidden"
     >
       <div className="grid grid-cols-5 items-center justify-around text-center max-w-md mx-auto w-full">
-        {/* Catálogo / Início */}
+        {/* Vitrine / Início */}
         <button
           onClick={onCatalogClick}
           className="flex flex-col items-center justify-center py-1 text-stone-600 hover:text-amber-800 transition cursor-pointer min-h-[44px]"
         >
           <Sparkles className="w-4 h-4 text-amber-700" />
-          <span className="text-[10px] font-semibold mt-0.5">Catálogo</span>
+          <span className="text-[10px] font-semibold mt-0.5">Vitrine</span>
         </button>
 
         {/* Buscar por Código */}
@@ -49,13 +50,15 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
           <span className="text-[10px] font-semibold mt-0.5">Por Código</span>
         </button>
 
-        {/* Guia Olfativo */}
+        {/* Catálogo Oficial 59 Páginas */}
         <button
-          onClick={() => setIsInspirationGuideOpen(true)}
-          className="flex flex-col items-center justify-center py-1 text-stone-600 hover:text-amber-800 transition cursor-pointer min-h-[44px]"
+          onClick={() => setIsCatalogOpen(true)}
+          className="flex flex-col items-center justify-center py-1 text-amber-900 hover:text-amber-950 transition cursor-pointer min-h-[44px]"
         >
-          <BookOpen className="w-4 h-4 text-stone-700" />
-          <span className="text-[10px] font-semibold mt-0.5">Guia 25ml</span>
+          <div className="w-5 h-5 rounded-md bg-amber-200/90 border border-amber-400 flex items-center justify-center text-amber-950 font-bold">
+            <BookOpen className="w-3.5 h-3.5 text-amber-950" />
+          </div>
+          <span className="text-[10px] font-extrabold mt-0.5 text-amber-900">Catálogo 59P</span>
         </button>
 
         {/* Favoritos */}

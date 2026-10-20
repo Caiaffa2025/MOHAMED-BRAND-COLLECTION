@@ -15,7 +15,8 @@ import {
   Lock,
   Hash,
   ChevronRight,
-  Sparkle
+  Sparkle,
+  Tag
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useProducts } from '../context/ProductContext';
@@ -49,7 +50,9 @@ export const Header: React.FC<HeaderProps> = ({
     favorites, 
     setIsCartOpen, 
     setIsInspirationGuideOpen, 
-    setSelectedProductForModal
+    setIsCatalogOpen,
+    setSelectedProductForModal,
+    setIsWholesalePopupOpen
   } = useCart();
 
   const { isAdminLoggedIn, openAdmin, products } = useProducts();
@@ -110,6 +113,15 @@ export const Header: React.FC<HeaderProps> = ({
               <Percent className="w-3.5 h-3.5 shrink-0" />
               <span>Pagamento Exclusivo via PIX (Confirmação Imediata)</span>
             </span>
+            <span className="hidden md:inline-block text-amber-400/50">•</span>
+            <button
+              onClick={() => setIsWholesalePopupOpen(true)}
+              className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-400/40 font-bold transition cursor-pointer text-[11px]"
+              title="Ver condições especiais de atacado"
+            >
+              <Tag className="w-3 h-3 text-amber-400 shrink-0" />
+              <span>Atacado Mín. 6 Peças R$ 49,99 (Sapatinhos sob consulta)</span>
+            </button>
           </div>
 
           <div className="flex items-center gap-2.5 sm:gap-3 text-[11px] sm:text-xs flex-wrap justify-center">
@@ -127,14 +139,19 @@ export const Header: React.FC<HeaderProps> = ({
               <span>{STORE_CONFIG.whatsappDisplay}</span>
             </a>
             {/* Admin Link */}
-            <button
-              onClick={openAdmin}
-              className="text-amber-200 hover:text-white flex items-center gap-1 font-semibold px-2 py-0.5 rounded-md bg-white/10 hover:bg-white/20 transition cursor-pointer border border-amber-400/30"
-              title="Painel do Administrador (Senha 1966)"
+            <a
+              href="#admin"
+              onClick={(e) => {
+                e.preventDefault();
+                openAdmin();
+              }}
+              data-admin-trigger="admin"
+              className="text-amber-200 hover:text-white flex items-center gap-1 font-semibold px-2 py-0.5 rounded-md bg-white/10 hover:bg-white/20 transition cursor-pointer border border-amber-400/30 text-[11px]"
+              title="Painel do Administrador (Editar Produtos, Valores e Imagens)"
             >
               <Lock className="w-3 h-3 text-amber-400 shrink-0" />
               <span>{isAdminLoggedIn ? 'Painel Admin' : 'Admin'}</span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -336,10 +353,29 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Action Buttons */}
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* Open 59-page Catalog Button */}
+          <a
+            href="#catalogo"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsCatalogOpen(true);
+            }}
+            data-catalog-trigger="catalog"
+            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-2 text-xs font-bold text-amber-950 bg-gradient-to-r from-amber-200 via-amber-300 to-amber-200 hover:from-amber-300 hover:to-amber-400 border border-amber-400/80 rounded-xl shadow-xs transition transform active:scale-95 cursor-pointer shrink-0"
+            title="Abrir Catálogo Oficial Brand Collection Completo (59 Páginas)"
+          >
+            <BookOpen className="w-4 h-4 text-amber-900 shrink-0" />
+            <span className="hidden sm:inline">Catálogo Oficial</span>
+            <span className="sm:hidden">Catálogo</span>
+            <span className="text-[10px] bg-amber-900 text-amber-200 font-extrabold px-1.5 py-0.5 rounded-md hidden md:inline">
+              59 Pág
+            </span>
+          </a>
+
           {/* Inspiration Guide */}
           <button
             onClick={() => setIsInspirationGuideOpen(true)}
-            className="hidden sm:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-stone-700 bg-amber-50/80 hover:bg-amber-100/80 border border-amber-200 text-amber-900 rounded-lg transition"
+            className="hidden lg:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-stone-700 bg-amber-50/80 hover:bg-amber-100/80 border border-amber-200 text-amber-900 rounded-lg transition"
             title="Tabela comparativa de números e perfumes originais"
           >
             <BookOpen className="w-4 h-4 text-amber-700" />
@@ -366,19 +402,25 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </button>
 
-          {/* Admin Access Button */}
-          <button
-            onClick={openAdmin}
-            className={`hidden sm:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border transition ${
+          {/* Admin Access Button - Visible across desktop and mobile */}
+          <a
+            href="#admin"
+            onClick={(e) => {
+              e.preventDefault();
+              openAdmin();
+            }}
+            data-admin-trigger="admin"
+            className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 sm:py-2 text-xs font-semibold rounded-xl border transition cursor-pointer shrink-0 ${
               isAdminLoggedIn
                 ? 'bg-amber-100 border-amber-300 text-amber-900 shadow-xs'
-                : 'text-stone-700 hover:text-amber-900 hover:bg-amber-50/60 border-stone-200'
+                : 'text-stone-700 hover:text-amber-900 hover:bg-amber-50/60 border-stone-200 bg-white'
             }`}
             title="Painel do Administrador (Editar Produtos, Valores e Imagens)"
           >
-            <Lock className="w-3.5 h-3.5 text-amber-700" />
-            <span className="hidden xl:inline">{isAdminLoggedIn ? 'Painel Admin' : 'Admin'}</span>
-          </button>
+            <Lock className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+            <span className="hidden sm:inline">{isAdminLoggedIn ? 'Painel Admin' : 'Admin'}</span>
+            <span className="sm:hidden text-[11px] font-bold">Admin</span>
+          </a>
 
           {/* Shopping Cart Button */}
           <button
@@ -618,6 +660,41 @@ export const Header: React.FC<HeaderProps> = ({
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-b border-stone-200 p-4 space-y-3">
           <div className="flex flex-col gap-2">
+            <a
+              href="#catalogo"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsCatalogOpen(true);
+                setMobileMenuOpen(false);
+              }}
+              data-catalog-trigger="catalog"
+              className="text-left py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-200 via-amber-300 to-amber-200 text-amber-950 font-bold flex items-center justify-between border border-amber-400 shadow-xs cursor-pointer"
+            >
+              <div className="flex items-center gap-2">
+                <BookOpen className="w-4 h-4 text-amber-900" />
+                <span>📖 Abrir Catálogo Oficial (59 Páginas)</span>
+              </div>
+              <span className="text-[10px] bg-amber-900 text-amber-200 px-1.5 py-0.5 rounded font-mono font-black">
+                PDF
+              </span>
+            </a>
+
+            <button
+              onClick={() => {
+                setIsWholesalePopupOpen(true);
+                setMobileMenuOpen(false);
+              }}
+              className="text-left py-2 px-3 rounded-lg bg-amber-500/10 text-amber-950 font-bold flex items-center justify-between border border-amber-300"
+            >
+              <div className="flex items-center gap-2">
+                <Tag className="w-4 h-4 text-amber-700" />
+                <span>🏷️ Atacado: Mínimo 6 Peças a R$ 49,99</span>
+              </div>
+              <span className="text-[10px] bg-amber-600 text-white font-extrabold px-1.5 py-0.5 rounded">
+                Ver Regras
+              </span>
+            </button>
+
             <button
               onClick={() => {
                 setSelectedCategory('feminino');
@@ -648,16 +725,19 @@ export const Header: React.FC<HeaderProps> = ({
               <BookOpen className="w-4 h-4 text-amber-700" />
               Tabela de Inspirações Olfativas
             </button>
-            <button
-              onClick={() => {
+            <a
+              href="#admin"
+              onClick={(e) => {
+                e.preventDefault();
                 openAdmin();
                 setMobileMenuOpen(false);
               }}
-              className="text-left py-2 px-3 rounded-lg bg-amber-100/70 text-amber-900 font-medium flex items-center gap-2 border border-amber-300"
+              data-admin-trigger="admin"
+              className="text-left py-2 px-3 rounded-lg bg-amber-100/70 text-amber-900 font-medium flex items-center gap-2 border border-amber-300 cursor-pointer"
             >
               <Lock className="w-4 h-4 text-amber-700" />
               <span>Painel do Administrador (Editar Produtos)</span>
-            </button>
+            </a>
           </div>
         </div>
       )}

@@ -26,9 +26,9 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({ product, onC
       volume: '25ml',
       concentration: 'Eau de Parfum (Alta Fixação)',
       image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80',
-      price: 69.90,
+      price: 70.00,
       oldPrice: 89.00,
-      wholesalePriceTier1: 69.90,
+      wholesalePriceTier1: 70.00,
       wholesalePriceTier2: 64.90,
       wholesalePriceTier3: 59.90,
       pixDiscountPercent: 5,
@@ -62,7 +62,7 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({ product, onC
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden bg-stone-950/80 backdrop-blur-xs flex items-center justify-center p-2.5 sm:p-4 touch-scroll w-full">
+    <div className="fixed inset-0 z-[110] overflow-y-auto overflow-x-hidden bg-stone-950/85 backdrop-blur-xs flex items-center justify-center p-2.5 sm:p-4 touch-scroll w-full">
       <div className="relative bg-white rounded-3xl max-w-3xl w-full shadow-2xl border border-stone-200 overflow-hidden my-4 sm:my-6 animate-in fade-in zoom-in-95 duration-200">
         {/* Header */}
         <div className="bg-stone-900 text-white p-4 sm:p-5 flex items-center justify-between">

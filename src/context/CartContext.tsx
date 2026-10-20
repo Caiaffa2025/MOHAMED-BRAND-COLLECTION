@@ -26,6 +26,10 @@ interface CartContextType {
   setIsCheckoutOpen: (open: boolean) => void;
   isInspirationGuideOpen: boolean;
   setIsInspirationGuideOpen: (open: boolean) => void;
+  isCatalogOpen: boolean;
+  setIsCatalogOpen: (open: boolean) => void;
+  isWholesalePopupOpen: boolean;
+  setIsWholesalePopupOpen: (open: boolean) => void;
   selectedProductForModal: Product | null;
   setSelectedProductForModal: (product: Product | null) => void;
   toastMessage: string | null;
@@ -63,6 +67,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [isInspirationGuideOpen, setIsInspirationGuideOpen] = useState(false);
+  const [isCatalogOpen, setIsCatalogOpen] = useState(false);
+  const [isWholesalePopupOpen, setIsWholesalePopupOpen] = useState(false);
   const [selectedProductForModal, setSelectedProductForModal] = useState<Product | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
@@ -81,6 +87,59 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error(e);
     }
   }, [favorites]);
+
+  // Support opening 59-page catalog via URL #catalogo, /catalogo, and global links
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      (window as any).openCatalog = () => setIsCatalogOpen(true);
+      (window as any).openCatalogModal = () => setIsCatalogOpen(true);
+    }
+
+    const checkHash = () => {
+      if (typeof window !== 'undefined') {
+        const hash = window.location.hash.toLowerCase();
+        const pathname = window.location.pathname.toLowerCase();
+        const search = window.location.search.toLowerCase();
+        if (
+          hash.includes('catalogo') || 
+          hash.includes('pdf') ||
+          pathname.includes('/catalogo') ||
+          search.includes('catalogo')
+        ) {
+          setIsCatalogOpen(true);
+        }
+      }
+    };
+
+    checkHash();
+    window.addEventListener('hashchange', checkHash);
+    window.addEventListener('popstate', checkHash);
+
+    const handleGlobalClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement)?.closest('a, button');
+      if (target) {
+        const href = target.getAttribute('href')?.toLowerCase() || '';
+        const dataRole = target.getAttribute('data-catalog-trigger');
+        if (
+          href === '#catalogo' || 
+          href === '#catalogo-completo' || 
+          href === '/catalogo' ||
+          dataRole === 'catalog'
+        ) {
+          e.preventDefault();
+          setIsCatalogOpen(true);
+        }
+      }
+    };
+
+    document.addEventListener('click', handleGlobalClick);
+
+    return () => {
+      window.removeEventListener('hashchange', checkHash);
+      window.removeEventListener('popstate', checkHash);
+      document.removeEventListener('click', handleGlobalClick);
+    };
+  }, []);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -139,10 +198,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-  // Total calculated with retail oldPrice for reference (de R$ 89 por R$ 69,90)
+  // Total calculated with retail oldPrice for reference (de R$ 89 por R$ 70,00)
   const regularTotal = cart.reduce((sum, item) => sum + (item.product.oldPrice || 89.0) * item.quantity, 0);
 
-  // Active cart subtotal calculated by standard item price (R$ 69,90)
+  // Active cart subtotal calculated by standard item price (R$ 70,00)
   const cartSubtotal = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
 
   // Coupon discount
@@ -204,6 +263,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setIsCheckoutOpen,
         isInspirationGuideOpen,
         setIsInspirationGuideOpen,
+        isCatalogOpen,
+        setIsCatalogOpen,
+        isWholesalePopupOpen,
+        setIsWholesalePopupOpen,
         selectedProductForModal,
         setSelectedProductForModal,
         toastMessage,

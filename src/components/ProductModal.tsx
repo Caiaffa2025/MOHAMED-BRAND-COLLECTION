@@ -11,7 +11,8 @@ import {
   Droplets, 
   MessageCircle, 
   Check, 
-  QrCode 
+  QrCode,
+  Tag 
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { STORE_CONFIG } from '../config/store';
@@ -22,7 +23,8 @@ export const ProductModal: React.FC = () => {
     setSelectedProductForModal, 
     addToCart, 
     toggleFavorite, 
-    isFavorite 
+    isFavorite,
+    setIsWholesalePopupOpen 
   } = useCart();
 
   const [quantity, setQuantity] = useState(1);
@@ -224,6 +226,23 @@ export const ProductModal: React.FC = () => {
                   QR Code gerado no checkout
                 </span>
               </div>
+            </div>
+
+            {/* Wholesale Banner Callout */}
+            <div 
+              onClick={() => setIsWholesalePopupOpen(true)}
+              className="bg-amber-500/10 hover:bg-amber-500/20 border border-amber-300/80 rounded-xl p-2.5 flex items-center justify-between cursor-pointer transition text-xs"
+              title="Clique para ver regras de atacado"
+            >
+              <div className="flex items-center gap-2 text-amber-950">
+                <Tag className="w-4 h-4 text-amber-700 shrink-0" />
+                <span className="font-semibold text-[11px] sm:text-xs">
+                  <strong>Atacado:</strong> Mínimo 6 Peças a <strong>R$ 49,99</strong> cada! (Sapatinhos sob consulta)
+                </span>
+              </div>
+              <span className="text-[10px] bg-amber-700 hover:bg-amber-800 text-white font-bold px-2.5 py-0.5 rounded-full shrink-0 shadow-2xs">
+                Ver Regras
+              </span>
             </div>
 
             {/* Quantity Selector and Buttons */}

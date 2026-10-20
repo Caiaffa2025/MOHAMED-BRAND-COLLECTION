@@ -1,10 +1,10 @@
 import React from 'react';
-import { Sparkles, ShieldCheck, Truck, CheckCircle2, QrCode, Lock, Droplets } from 'lucide-react';
+import { Sparkles, ShieldCheck, Truck, CheckCircle2, QrCode, Lock, Droplets, BookOpen, Tag } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { STORE_CONFIG } from '../config/store';
 
 export const HeroBanner: React.FC = () => {
-  const { setIsInspirationGuideOpen } = useCart();
+  const { setIsInspirationGuideOpen, setIsCatalogOpen, setIsWholesalePopupOpen } = useCart();
 
   return (
     <div className="relative overflow-hidden w-full max-w-full bg-gradient-to-br from-stone-900 via-neutral-900 to-amber-950 text-white border-b border-amber-900/40" style={{ contain: 'paint' }}>
@@ -53,22 +53,43 @@ export const HeroBanner: React.FC = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-2 sm:pt-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-2 sm:pt-3 flex-wrap">
+              <a
+                href="#catalogo"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsCatalogOpen(true);
+                }}
+                data-catalog-trigger="catalog"
+                className="bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-600 text-stone-950 font-extrabold px-5 sm:px-6 py-3 rounded-xl text-xs sm:text-sm shadow-xl shadow-amber-500/30 transition transform hover:-translate-y-0.5 cursor-pointer text-center flex items-center justify-center gap-2"
+              >
+                <BookOpen className="w-4 h-4 text-stone-950 shrink-0" />
+                <span>Abrir Catálogo Completo (59 Pág)</span>
+              </a>
+
               <button
                 onClick={() => {
                   const el = document.getElementById('catalog-section');
                   el?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-stone-950 font-bold px-5 sm:px-6 py-3 rounded-xl text-xs sm:text-sm shadow-lg shadow-amber-600/30 transition transform hover:-translate-y-0.5 cursor-pointer text-center"
+                className="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold px-4 sm:px-5 py-3 rounded-xl text-xs sm:text-sm transition cursor-pointer text-center"
               >
-                Ver Catálogo Completo
+                Comprar Miniaturas (R$ 70,00)
+              </button>
+
+              <button
+                onClick={() => setIsWholesalePopupOpen(true)}
+                className="bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-400/40 font-bold px-3.5 sm:px-4 py-3 rounded-xl text-xs sm:text-sm transition cursor-pointer text-center flex items-center justify-center gap-1.5"
+              >
+                <Tag className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>Atacado (R$ 49,99)</span>
               </button>
 
               <button
                 onClick={() => setIsInspirationGuideOpen(true)}
-                className="bg-white/10 hover:bg-white/15 text-white border border-white/20 font-semibold px-4 sm:px-5 py-3 rounded-xl text-xs sm:text-sm transition cursor-pointer text-center"
+                className="bg-white/5 hover:bg-white/10 text-stone-300 hover:text-white border border-white/10 font-medium px-3.5 sm:px-4 py-3 rounded-xl text-xs sm:text-sm transition cursor-pointer text-center hidden xl:block"
               >
-                Tabela de Inspirações Olfativas
+                Guia de Inspirações
               </button>
             </div>
           </div>
@@ -97,7 +118,7 @@ export const HeroBanner: React.FC = () => {
                 <span className="text-[11px] text-stone-400 line-through block">De R$ 89,00</span>
                 <div className="flex items-center justify-center gap-2 my-0.5">
                   <span className="text-xs uppercase font-semibold text-amber-300">Por apenas</span>
-                  <span className="text-2xl sm:text-3xl font-display font-black text-amber-200">R$ 69,90</span>
+                  <span className="text-2xl sm:text-3xl font-display font-black text-amber-200">R$ 70,00</span>
                   <span className="text-xs text-stone-300">cada</span>
                 </div>
                 <span className="text-[10px] font-semibold text-emerald-400 flex items-center justify-center gap-1">

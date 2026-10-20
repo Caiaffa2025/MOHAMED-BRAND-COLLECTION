@@ -12,7 +12,8 @@ import {
   Heart,
   Tag,
   ArrowUpDown,
-  Hash
+  Hash,
+  BookOpen
 } from 'lucide-react';
 import { CartProvider, useCart } from './context/CartContext';
 import { ProductProvider, useProducts } from './context/ProductContext';
@@ -25,14 +26,17 @@ import { ProductModal } from './components/ProductModal';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { InspirationGuideModal } from './components/InspirationGuideModal';
+import { CatalogModal } from './components/CatalogModal';
+import { WholesalePopup } from './components/WholesalePopup';
 import { AdminLoginModal } from './components/admin/AdminLoginModal';
 import { AdminDashboardModal } from './components/admin/AdminDashboardModal';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { MobileBottomNav } from './components/MobileBottomNav';
 
 function StoreContent() {
-  const { favorites, toastMessage } = useCart();
+  const { favorites, toastMessage, setIsCatalogOpen } = useCart();
   const { 
     products, 
     isAdminModalOpen, 
@@ -515,21 +519,25 @@ function StoreContent() {
       <CartDrawer />
       <CheckoutModal />
       <InspirationGuideModal />
+      <CatalogModal />
+      <WholesalePopup />
       <FloatingWhatsApp />
 
       {/* Admin Modals */}
-      <AdminLoginModal
-        isOpen={isLoginModalOpen}
-        onClose={() => setIsLoginModalOpen(false)}
-        onSuccess={() => {
-          setIsLoginModalOpen(false);
-          setIsAdminModalOpen(true);
-        }}
-      />
-      <AdminDashboardModal
-        isOpen={isAdminModalOpen}
-        onClose={() => setIsAdminModalOpen(false)}
-      />
+      <ErrorBoundary fallbackTitle="Painel do Administrador">
+        <AdminLoginModal
+          isOpen={isLoginModalOpen}
+          onClose={() => setIsLoginModalOpen(false)}
+          onSuccess={() => {
+            setIsLoginModalOpen(false);
+            setIsAdminModalOpen(true);
+          }}
+        />
+        <AdminDashboardModal
+          isOpen={isAdminModalOpen}
+          onClose={() => setIsAdminModalOpen(false)}
+        />
+      </ErrorBoundary>
 
       {/* Footer */}
       <Footer />

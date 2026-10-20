@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Lock, KeyRound, ShieldAlert, ArrowRight } from 'lucide-react';
+import { X, Lock, KeyRound, ShieldAlert, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import { useProducts } from '../../context/ProductContext';
 
 interface AdminLoginModalProps {
@@ -11,6 +11,7 @@ interface AdminLoginModalProps {
 export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClose, onSuccess }) => {
   const { loginAdmin } = useProducts();
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(false);
 
   if (!isOpen) return null;
@@ -28,7 +29,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClos
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden bg-stone-950/80 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 w-full">
+    <div className="fixed inset-0 z-[100] overflow-y-auto overflow-x-hidden bg-stone-950/85 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 w-full">
       <div className="relative bg-white rounded-3xl max-w-md w-full shadow-2xl border border-stone-200 overflow-hidden my-6 animate-in fade-in zoom-in-95 duration-200">
         {/* Header */}
         <div className="bg-stone-900 text-white p-5 flex items-center justify-between">
@@ -46,8 +47,13 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClos
             </div>
           </div>
           <button
-            onClick={onClose}
-            className="p-1.5 rounded-lg text-stone-400 hover:text-white transition"
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window.location.hash.includes('admin') || window.location.hash.includes('painel'))) {
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+              }
+              onClose();
+            }}
+            className="p-1.5 rounded-lg text-stone-400 hover:text-white transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -61,7 +67,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClos
             </label>
             <div className="relative">
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 required
                 autoFocus
                 value={password}
@@ -70,13 +76,21 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClos
                   setError(false);
                 }}
                 placeholder="Digite a senha de administrador"
-                className={`w-full bg-stone-50 border rounded-xl pl-9 pr-3 py-2.5 text-sm outline-none transition ${
+                className={`w-full bg-stone-50 border rounded-xl pl-9 pr-10 py-2.5 text-sm outline-none transition tracking-wider ${
                   error
                     ? 'border-rose-500 ring-2 ring-rose-500/20 bg-rose-50/30'
                     : 'border-stone-200 focus:border-amber-500 focus:bg-white'
                 }`}
               />
               <KeyRound className="w-4 h-4 text-stone-400 absolute left-3 top-3" />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-2.5 p-1 text-stone-400 hover:text-stone-700 transition cursor-pointer"
+                title={showPassword ? "Ocultar senha" : "Exibir senha"}
+              >
+                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
             </div>
             {error && (
               <p className="text-xs text-rose-600 flex items-center gap-1 mt-1 font-medium">
@@ -93,7 +107,12 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClos
           <div className="pt-2 flex gap-2">
             <button
               type="button"
-              onClick={onClose}
+              onClick={() => {
+                if (typeof window !== 'undefined' && (window.location.hash.includes('admin') || window.location.hash.includes('painel'))) {
+                  history.replaceState(null, '', window.location.pathname + window.location.search);
+                }
+                onClose();
+              }}
               className="flex-1 py-2.5 rounded-xl border border-stone-200 text-stone-700 hover:bg-stone-50 font-semibold text-xs transition"
             >
               Cancelar

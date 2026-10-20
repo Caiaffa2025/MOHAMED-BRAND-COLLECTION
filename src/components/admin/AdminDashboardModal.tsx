@@ -37,6 +37,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
   const [editingItem, setEditingItem] = useState<Product | null>(null);
   const [isCreatingNew, setIsCreatingNew] = useState(false);
   const [showConfirmReset, setShowConfirmReset] = useState(false);
+  const [productToDelete, setProductToDelete] = useState<Product | null>(null);
 
   if (!isOpen) return null;
 
@@ -51,8 +52,6 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
       p.brand.toLowerCase().includes(q);
     return matchesCat && matchesSearch;
   });
-
-  const [productToDelete, setProductToDelete] = useState<Product | null>(null);
 
   const handleDelete = (p: Product) => {
     setProductToDelete(p);
@@ -70,8 +69,24 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
     setShowConfirmReset(false);
   };
 
+  const handleModalClose = () => {
+    if (typeof window !== 'undefined') {
+      if (window.location.pathname.toLowerCase().includes('admin') || window.location.pathname.toLowerCase().includes('painel')) {
+        history.replaceState(null, '', '/');
+      } else if (window.location.hash.toLowerCase().includes('admin') || window.location.hash.toLowerCase().includes('painel')) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    }
+    onClose();
+  };
+
+  const handleModalLogout = () => {
+    logoutAdmin();
+    handleModalClose();
+  };
+
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-stone-950/80 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 w-full max-w-full">
+    <div className="fixed inset-0 z-[100] overflow-hidden bg-stone-950/85 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 w-full max-w-full">
       <div className="relative bg-white rounded-3xl max-w-6xl w-full h-[90vh] shadow-2xl border border-stone-200 overflow-hidden flex flex-col">
         {/* Admin Toast */}
         {adminToast && (
@@ -104,16 +119,16 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
 
           <div className="flex items-center gap-2">
             <button
-              onClick={() => logoutAdmin()}
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-stone-800 hover:bg-stone-700 text-stone-300 hover:text-white transition flex items-center gap-1.5"
+              onClick={handleModalLogout}
+              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-stone-800 hover:bg-stone-700 text-stone-300 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
               title="Encerrar sessão de administrador"
             >
               <LogOut className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Sair</span>
             </button>
             <button
-              onClick={onClose}
-              className="p-1.5 rounded-lg text-stone-400 hover:text-white transition"
+              onClick={handleModalClose}
+              className="p-1.5 rounded-lg text-stone-400 hover:text-white transition cursor-pointer"
               title="Voltar para a loja pública"
             >
               <X className="w-5 h-5" />
@@ -296,10 +311,12 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({ isOpen
                       <span className="text-[10px] text-stone-500 block mt-0.5">{p.brand}</span>
                     </td>
                     <td className="py-2.5 px-3">
-                      <span className="font-bold text-emerald-800">R$ {p.price.toFixed(2).replace('.', ',')}</span>
+                      <span className="font-bold text-emerald-800">
+                        R$ {(Number(p.price) || 0).toFixed(2).replace('.', ',')}
+                      </span>
                     </td>
                     <td className="py-2.5 px-3 text-stone-500 line-through">
-                      R$ {p.oldPrice.toFixed(2).replace('.', ',')}
+                      R$ {(Number(p.oldPrice) || 0).toFixed(2).replace('.', ',')}
                     </td>
                     <td className="py-2.5 px-3 font-mono">
                       {p.stockCount} un
