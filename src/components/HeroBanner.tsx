@@ -80,9 +80,10 @@ export const HeroBanner: React.FC = () => {
               <button
                 onClick={() => setIsWholesalePopupOpen(true)}
                 className="bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-400/40 font-bold px-3.5 sm:px-4 py-3 rounded-xl text-xs sm:text-sm transition cursor-pointer text-center flex items-center justify-center gap-1.5"
+                title="Ver condições especiais de atacado para 10 ou mais peças"
               >
                 <Tag className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Atacado (R$ 49,99)</span>
+                <span>Atacado Mín. 10 Peças (R$ 49,99)</span>
               </button>
 
               <button

@@ -120,7 +120,7 @@ export const Header: React.FC<HeaderProps> = ({
               title="Ver condições especiais de atacado"
             >
               <Tag className="w-3 h-3 text-amber-400 shrink-0" />
-              <span>Atacado Mín. 6 Peças R$ 49,99 (Sapatinhos sob consulta)</span>
+              <span>Atacado Mín. 10 Peças R$ 49,99 (Sapatinhos sob consulta)</span>
             </button>
           </div>
 
@@ -688,7 +688,7 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <div className="flex items-center gap-2">
                 <Tag className="w-4 h-4 text-amber-700" />
-                <span>🏷️ Atacado: Mínimo 6 Peças a R$ 49,99</span>
+                <span>🏷️ Atacado: Mínimo 10 Peças a R$ 49,99</span>
               </div>
               <span className="text-[10px] bg-amber-600 text-white font-extrabold px-1.5 py-0.5 rounded">
                 Ver Regras

@@ -147,7 +147,7 @@ export const Footer: React.FC = () => {
                 onClick={() => setIsWholesalePopupOpen(true)}
                 className="text-amber-400 hover:text-amber-300 font-semibold transition cursor-pointer flex items-center gap-1.5"
               >
-                <span>🏷️ Atacado: Mínimo 6 Peças R$ 49,99 (Ver Regras)</span>
+                <span>🏷️ Atacado: Mínimo 10 Peças R$ 49,99 (Ver Regras)</span>
               </button>
             </li>
             <li>

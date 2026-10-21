@@ -237,7 +237,7 @@ export const ProductModal: React.FC = () => {
               <div className="flex items-center gap-2 text-amber-950">
                 <Tag className="w-4 h-4 text-amber-700 shrink-0" />
                 <span className="font-semibold text-[11px] sm:text-xs">
-                  <strong>Atacado:</strong> Mínimo 6 Peças a <strong>R$ 49,99</strong> cada! (Sapatinhos sob consulta)
+                  <strong>Atacado:</strong> Mínimo 10 Peças a <strong>R$ 49,99</strong> cada! (Sapatinhos sob consulta)
                 </span>
               </div>
               <span className="text-[10px] bg-amber-700 hover:bg-amber-800 text-white font-bold px-2.5 py-0.5 rounded-full shrink-0 shadow-2xs">

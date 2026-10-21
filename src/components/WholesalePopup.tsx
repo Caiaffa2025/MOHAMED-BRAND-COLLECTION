@@ -47,7 +47,7 @@ export const WholesalePopup: React.FC = () => {
 
   const handleWhatsAppWholesale = () => {
     const text = `Olá Mohamed Brand Collection! Gostaria de fazer um pedido no ATACADO com as condições especiais:\n\n` +
-      `📦 *Mínimo:* 6 peças a R$ 49,99 cada\n` +
+      `📦 *Mínimo:* 10 peças a R$ 49,99 cada\n` +
       `👠 *Sapatinhos:* Cotação acima de 10 peças (Sob Consulta)\n\n` +
       `Poderiam me enviar a lista de códigos disponíveis e chave PIX para envio?`;
     window.open(STORE_CONFIG.getWhatsappUrl(text), '_blank');
@@ -99,7 +99,7 @@ export const WholesalePopup: React.FC = () => {
         {/* Content Body */}
         <div className="p-5 sm:p-6 space-y-4 text-stone-800 text-xs sm:text-sm">
           
-          {/* Main Condition 1: 6 peças a R$ 49,99 */}
+          {/* Main Condition 1: 10 peças a R$ 49,99 */}
           <div className="bg-gradient-to-br from-amber-50 via-white to-amber-50/40 border-2 border-amber-400/80 rounded-2xl p-4 shadow-xs relative overflow-hidden">
             <div className="absolute top-0 right-0 bg-amber-600 text-white text-[10px] font-black uppercase px-3 py-1 rounded-bl-xl tracking-wider">
               Mais Vendido
@@ -114,7 +114,7 @@ export const WholesalePopup: React.FC = () => {
                 </span>
                 <div className="flex items-baseline gap-2 mt-0.5 flex-wrap">
                   <span className="text-stone-900 font-extrabold text-sm sm:text-base">
-                    Mínimo 6 Peças:
+                    Mínimo 10 Peças:
                   </span>
                   <span className="text-xl sm:text-2xl font-black text-emerald-700 font-mono">
                     R$ 49,99
@@ -122,7 +122,7 @@ export const WholesalePopup: React.FC = () => {
                   <span className="text-xs text-stone-500 font-semibold">/ cada</span>
                 </div>
                 <p className="text-stone-600 text-[11px] sm:text-xs mt-1.5 leading-relaxed">
-                  Monte seu pedido com as fragrâncias que preferir! Válido para a linha completa Brand Collection 25ml.
+                  Monte seu pedido com as fragrâncias que preferir! Válido a partir de 10 unidades da linha completa Brand Collection 25ml.
                 </p>
               </div>
             </div>
